@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="./casestudies-data.js"></script>
+  <script src="./metrics-data.js"></script>
+  <script src="./guesstimates-data.js"></script>
+  <script src="./improvement-data.js"></script>
+  <script src="./design-data.js"></script>
+  <script src="./bookmarks.js"></script>
+  <script src="./community.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #e9e7e2; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: #c6f24e; color: #1a1712; }
+  </style>
+</helmet>
+
+<div style="font-family: 'Manrope', sans-serif; background: #e9e7e2; color: #1a1712;">
+  <nav style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; background: #f4f1eaee; backdrop-filter: blur(8px); border-bottom: 1.5px solid #1a1712;">
+    <a href="Shubham Nayak Portfolio.dc.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -0.01em;">SN<span style="color:#5b2fe0;">.</span></a>
+    <a href="{{ backHref }}" style="font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600;">← All {{ catLabel }} case studies</a>
+    <a href="Shubham Nayak Portfolio.dc.html#contact" style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; background:#5b2fe0; color:#fff; padding:9px 17px; border-radius:999px; border:1.5px solid #1a1712; box-shadow: 2px 2px 0 #1a1712;">Hire me →</a>
+  </nav>
+
+  <sc-if value="{{ loaded }}" hint-placeholder-val="{{ false }}">
+    <header style="max-width: 860px; margin: 0 auto; padding: 52px 40px 34px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; background:#c6f24e; border:1.5px solid #1a1712; border-radius:999px; padding:5px 12px;">{{ catLabel }}</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; background:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:5px 12px;">{{ company }}</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6f6a60;">{{ readTime }}</span>
+      </div>
+      <div style="background:#f2f0eb; border:1.5px solid #1a1712; border-radius:20px; box-shadow:6px 6px 0 #1a1712; height:170px; display:flex; align-items:center; justify-content:center; margin-bottom:30px;">
+        <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:52px; letter-spacing:-0.03em; color:{{ brand }};">{{ wordmark }}</span>
+      </div>
+      <h1 style="font-family:'Bricolage Grotesque',sans-serif; font-size:44px; line-height:1.02; margin:0; font-weight:800; letter-spacing:-0.03em;">{{ title }}</h1>
+      <button onClick="{{ onBookmark }}" style="margin-top:22px; display:inline-flex; align-items:center; gap:8px; background:{{ bmBg }}; color:{{ bmFg }}; border:1.5px solid #1a1712; border-radius:999px; padding:11px 20px; font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600; cursor:pointer; box-shadow:3px 3px 0 #1a1712;">{{ bmLabel }}</button>
+    </header>
+
+    <article style="max-width: 760px; margin: 0 auto; padding: 6px 40px 40px; display:flex; flex-direction:column; gap:22px;">
+      <sc-for list="{{ blocks }}" as="b" hint-placeholder-count="8">
+
+        <sc-if value="{{ b.isP }}"><p style="font-size:17.5px; line-height:1.68; color:#33302a; margin:0;">{{ b.x }}</p></sc-if>
+
+        <sc-if value="{{ b.isStep }}">
+          <div style="display:flex; align-items:center; gap:14px; margin-top:24px;">
+            <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:15px; background:#5b2fe0; color:#fff; border:1.5px solid #1a1712; border-radius:10px; padding:6px 12px; white-space:nowrap; box-shadow:3px 3px 0 #1a1712;">{{ b.label }}</span>
+            <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-size:29px; font-weight:800; letter-spacing:-0.02em; margin:0;">{{ b.x }}</h2>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isSub }}"><h3 style="font-family:'Bricolage Grotesque',sans-serif; font-size:20px; font-weight:800; letter-spacing:-0.01em; margin:10px 0 -4px; color:#5b2fe0;">{{ b.x }}</h3></sc-if>
+
+        <sc-if value="{{ b.isNote }}">
+          <div style="background:#c6f24e; border:1.5px solid #1a1712; border-radius:16px; padding:18px 22px; box-shadow:4px 4px 0 #1a1712; display:flex; gap:12px; align-items:flex-start;">
+            <span style="font-size:20px; line-height:1.4;">💡</span>
+            <div style="font-size:16.5px; line-height:1.55; font-weight:600; color:#1a1712;">{{ b.x }}</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isCallout }}">
+          <div style="background:#5b2fe0; color:#fff; border:1.5px solid #1a1712; border-radius:18px; padding:26px 28px; box-shadow:6px 6px 0 #1a1712;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; opacity:0.85; margin-bottom:10px;">{{ b.label }}</div>
+            <div style="font-size:18px; line-height:1.55; font-weight:500;">{{ b.x }}</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isUl }}">
+          <div style="display:flex; flex-direction:column; gap:11px;">
+            <sc-for list="{{ b.items }}" as="it" hint-placeholder-count="3">
+              <div style="display:flex; gap:12px; align-items:flex-start;">
+                <span style="color:#ff5a3c; font-weight:800; font-size:18px; line-height:1.5;">→</span>
+                <span style="font-size:16.5px; line-height:1.58; color:#33302a;">{{ it }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isQa }}">
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <sc-for list="{{ b.items }}" as="qa" hint-placeholder-count="4">
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <div style="display:flex; gap:10px; align-items:flex-start;">
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; background:#1a1712; color:#f4f1ea; border-radius:6px; padding:4px 8px; margin-top:2px; white-space:nowrap;">YOU ASK</span>
+                  <span style="font-size:16px; line-height:1.55; color:#1a1712; font-weight:600;">{{ qa.q }}</span>
+                </div>
+                <div style="display:flex; gap:10px; align-items:flex-start; margin-left:22px;">
+                  <span style="font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; background:#ff5a3c; color:#fff; border-radius:6px; padding:4px 8px; margin-top:2px; white-space:nowrap;">THEY SAY</span>
+                  <span style="font-size:16px; line-height:1.55; color:#4a463d;">{{ qa.a }}</span>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isCalc }}">
+          <div style="background:#fff; border:1.5px solid #1a1712; border-radius:18px; padding:22px 24px; box-shadow:5px 5px 0 #1a1712;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#5b2fe0; margin-bottom:16px;">{{ b.label }}</div>
+            <div style="display:flex; flex-direction:column; gap:13px;">
+              <sc-for list="{{ b.rows }}" as="r" hint-placeholder-count="4">
+                <div style="display:flex; flex-direction:column; gap:6px;">
+                  <div style="display:flex; justify-content:space-between; align-items:baseline; gap:14px;">
+                    <span style="font-size:15px; color:#33302a; line-height:1.4;">{{ r.label }}</span>
+                    <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:18px; color:#1a1712; white-space:nowrap;">{{ r.value }}</span>
+                  </div>
+                  <sc-if value="{{ r.hasBar }}"><div style="height:9px; background:#eae6dc; border:1.5px solid #1a1712; border-radius:6px; overflow:hidden;"><div style="height:100%; width:{{ r.pct }}%; background:#c6f24e;"></div></div></sc-if>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isRice }}">
+          <div style="background:#fff; border:1.5px solid #1a1712; border-radius:18px; padding:22px 24px; box-shadow:5px 5px 0 #1a1712;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#5b2fe0; margin-bottom:16px;">{{ b.label }}</div>
+            <div style="display:flex; flex-direction:column; gap:14px;">
+              <sc-for list="{{ b.riceRows }}" as="r" hint-placeholder-count="3">
+                <div style="display:flex; flex-direction:column; gap:7px;">
+                  <div style="display:flex; justify-content:space-between; align-items:baseline; gap:12px;">
+                    <span style="font-size:15px; font-weight:700; color:#1a1712; line-height:1.35;">{{ r.name }}</span>
+                    <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:20px; color:#5b2fe0; white-space:nowrap;">{{ r.score }}</span>
+                  </div>
+                  <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6f6a60; letter-spacing:0.04em;">R {{ r.r }} · I {{ r.i }} · C {{ r.c }} · E {{ r.e }}</div>
+                  <div style="height:9px; background:#eae6dc; border:1.5px solid #1a1712; border-radius:6px; overflow:hidden;"><div style="height:100%; width:{{ r.pct }}%; background:#5b2fe0;"></div></div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isAnswer }}">
+          <div style="background:#ff5a3c; color:#fff; border:1.5px solid #1a1712; border-radius:18px; padding:28px; box-shadow:6px 6px 0 #1a1712; text-align:center;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; opacity:0.9; margin-bottom:8px;">{{ b.label }}</div>
+            <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:44px; letter-spacing:-0.02em; line-height:1.0;">{{ b.x }}</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isJourney }}">
+          <div style="background:#fff; border:1.5px solid #1a1712; border-radius:18px; padding:22px 24px; box-shadow:5px 5px 0 #1a1712;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#5b2fe0; margin-bottom:14px;">{{ b.label }}</div>
+            <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px;">
+              <sc-for list="{{ b.steps }}" as="st" hint-placeholder-count="4">
+                <span style="background:#f4f1ea; border:1.5px solid #1a1712; border-radius:10px; padding:8px 12px; font-size:13.5px; font-weight:600;">{{ st.label }}</span>
+                <sc-if value="{{ st.arrow }}"><span style="color:#5b2fe0; font-weight:800;">→</span></sc-if>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+      </sc-for>
+
+      <sc-if value="{{ gated }}">
+        <div style="margin-top:-30px;">
+          <div style="height:110px; background:linear-gradient(to bottom, rgba(233,231,226,0), #e9e7e2); margin-bottom:6px;"></div>
+          <div style="text-align:center; background:#fff; border:1.5px solid #1a1712; border-radius:22px; padding:34px 30px; box-shadow:7px 7px 0 #5b2fe0;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#5b2fe0; margin-bottom:10px;">Keep reading — it's free</div>
+            <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:30px; font-weight:800; letter-spacing:-0.02em; line-height:1.05; margin-bottom:10px; text-wrap:pretty;">Sign in to see the full breakdown</div>
+            <p style="font-size:16px; line-height:1.6; color:#4a463d; max-width:460px; margin:0 auto 22px;">You're just getting to the good part. A free account unlocks the complete case study, and lets you rate it, comment, and join the forum — 10 seconds, no cost, ever.</p>
+            <button onClick="{{ onUnlock }}" style="display:inline-flex; align-items:center; gap:8px; background:#c6f24e; color:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:14px 28px; font-weight:800; font-size:16px; cursor:pointer; box-shadow:4px 4px 0 #1a1712;">Sign in / Create free account →</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ unlocked }}">
+        <div style="text-align:center; padding:30px 0 6px; border-top:1.5px solid #1a171222; margin-top:18px;">
+          <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-size:28px; font-weight:800; letter-spacing:-0.02em; margin:8px 0 10px;">{{ ctaHeading }}</h2>
+          <p style="font-size:16.5px; line-height:1.6; color:#4a463d; margin:0 0 22px;">{{ ctaSub }}</p>
+          <a href="Shubham Nayak Portfolio.dc.html#contact" style="display:inline-block; background:#1a1712; color:#f4f1ea; border:1.5px solid #1a1712; border-radius:999px; padding:15px 30px; font-weight:700; font-size:16px;">Reach out →</a>
+        </div>
+
+        <div style="background:#fff; border:1.5px solid #1a1712; border-radius:18px; padding:20px 24px; box-shadow:5px 5px 0 #1a1712; margin-top:26px; display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap;">
+          <div>
+            <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:19px; font-weight:800; letter-spacing:-0.01em;">Was this helpful?</div>
+            <div style="font-size:13.5px; color:#6f6a60; margin-top:3px;">{{ avgLabel }}</div>
+          </div>
+          <div style="display:flex; gap:5px;">
+            <sc-for list="{{ ratingStars }}" as="s" hint-placeholder-count="5">
+              <button onClick="{{ s.onClick }}" title="Rate" style="background:none; border:none; cursor:pointer; font-size:32px; line-height:1; color:{{ s.color }}; padding:0;">★</button>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="margin-top:28px;">
+          <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:22px; font-weight:800; letter-spacing:-0.02em; margin-bottom:14px;">Comments ({{ commentCount }})</div>
+          <textarea value="{{ commentText }}" onInput="{{ onCommentInput }}" placeholder="Share a thought, a question, your own take…" style="width:100%; box-sizing:border-box; min-height:74px; border:1.5px solid #1a1712; border-radius:14px; padding:13px 15px; font-family:'Manrope',sans-serif; font-size:15px; resize:vertical;"></textarea>
+          <div style="text-align:right; margin:10px 0 22px;">
+            <button onClick="{{ onPostComment }}" style="background:#5b2fe0; color:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:11px 22px; font-weight:700; font-size:14px; cursor:pointer; box-shadow:3px 3px 0 #1a1712;">Post comment</button>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <sc-for list="{{ comments }}" as="c" hint-placeholder-count="0">
+              <div style="background:#fff; border:1.5px solid #1a1712; border-radius:16px; padding:16px 18px; box-shadow:3px 3px 0 #1a1712;">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                  <div style="width:34px; height:34px; flex:none; border-radius:999px; border:1.5px solid #1a1712; background:#c6f24e; display:flex; align-items:center; justify-content:center; font-weight:800; font-family:'Bricolage Grotesque',sans-serif; font-size:15px;">{{ c.initial }}</div>
+                  <div style="flex:1;">
+                    <div style="font-weight:700; font-size:14.5px;">{{ c.name }}</div>
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#6f6a60;">{{ c.meta }}</div>
+                  </div>
+                  <sc-if value="{{ c.canDelete }}"><button onClick="{{ c.onDelete }}" style="background:#f4f1ea; border:1.5px solid #1a1712; border-radius:8px; padding:4px 9px; font-size:11px; cursor:pointer; font-family:'JetBrains Mono',monospace;">delete</button></sc-if>
+                </div>
+                <div style="font-size:15.5px; line-height:1.55; color:#33302a; white-space:pre-wrap;">{{ c.text }}</div>
+              </div>
+            </sc-for>
+            <sc-if value="{{ noComments }}"><div style="font-size:15px; color:#6f6a60; padding:6px 2px;">No comments yet — be the first to say something.</div></sc-if>
+          </div>
+        </div>
+      </sc-if>
+    </article>
+
+    <section style="max-width: 1160px; margin: 0 auto; padding: 40px 40px 20px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#5b2fe0; margin-bottom:18px;">Browse related case studies</div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+        <sc-for list="{{ related }}" as="r" hint-placeholder-count="3">
+          <a href="CaseStudy.dc.html?cat={{ catParam }}&case={{ r.slug }}" style="display:flex; flex-direction:column; background:#fff; border:1.5px solid #1a1712; border-radius:20px; overflow:hidden; box-shadow:5px 5px 0 #1a1712;" style-hover="transform: translate(-2px,-2px); box-shadow:7px 7px 0 #1a1712;">
+            <div style="background:#f2f0eb; border-bottom:1.5px solid #1a1712; height:110px; display:flex; align-items:center; justify-content:center;">
+              <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:30px; letter-spacing:-0.02em; color:{{ r.brand }};">{{ r.wordmark }}</span>
+            </div>
+            <div style="padding:18px 20px;">
+              <div style="display:flex; gap:7px; margin-bottom:10px;">
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; background:#c6f24e; border:1.5px solid #1a1712; border-radius:999px; padding:3px 9px;">{{ catLabel }}</span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; background:#f4f1ea; border:1.5px solid #1a1712; border-radius:999px; padding:3px 9px;">{{ r.company }}</span>
+              </div>
+              <div style="font-size:15px; font-weight:600; line-height:1.35;">{{ r.title }}</div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+  </sc-if>
+
+  <footer style="background:#1a1712; color:#b8b3a8; padding:36px 0; margin-top:40px;">
+    <div style="max-width:1160px; margin:0 auto; padding:0 40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+      <a href="Shubham Nayak Portfolio.dc.html" style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:20px; color:#f4f1ea;">Shubham Nayak<span style="color:#c6f24e;">.</span></a>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px;">© 2026 · Free resource · Made to help you win</div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { c: null, cases: [], user: null, avg: 0, myRating: 0, comments: [], commentText: '' };
+  componentDidMount() {
+    const cat = (new URLSearchParams(location.search).get('cat') || 'rca').toLowerCase();
+    this.cat = cat;
+    this.load(20);
+    this._bm = () => this.forceUpdate();
+    window.addEventListener('snbm:change', this._bm);
+    this._auth = () => { this.setState({ user: (window.SNAuth && window.SNAuth.user) || null }); this.refreshCommunity(); };
+    window.addEventListener('snauth:change', this._auth);
+    this.setState({ user: (window.SNAuth && window.SNAuth.user) || null });
+  }
+  componentWillUnmount() {
+    if (this._bm) window.removeEventListener('snbm:change', this._bm);
+    if (this._auth) window.removeEventListener('snauth:change', this._auth);
+  }
+  articleId() { return (this.cat || 'rca') + ':' + (this.state.c ? this.state.c.slug : ''); }
+  refreshCommunity() {
+    if (!this.state.c || !window.SNData) return;
+    window.SNData.getRating(this.articleId()).then(r => this.setState({ avg: r.avg, myRating: r.mine }));
+    window.SNData.listComments(this.articleId()).then(list => this.setState({ comments: list }));
+  }
+  gateIndex(blocks) {
+    let s = 0;
+    for (let i = 0; i < blocks.length; i++) { if (blocks[i].t === 'step') { s++; if (s === 2) return i; } }
+    return Math.max(3, Math.ceil(blocks.length * 0.4));
+  }
+  when(ts) {
+    const d = Date.now() - ts; const m = Math.floor(d / 60000);
+    if (m < 1) return 'just now'; if (m < 60) return m + 'm ago';
+    const h = Math.floor(m / 60); if (h < 24) return h + 'h ago';
+    return Math.floor(h / 24) + 'd ago';
+  }
+  onRate(n) {
+    if (!window.SNAuth) return;
+    window.SNAuth.require('Sign in free to rate this.').then(() => { this.setState({ myRating: n }); window.SNData.setRating(this.articleId(), n).then(() => this.refreshCommunity()); });
+  }
+  onPost() {
+    const t = (this.state.commentText || '').trim(); if (!t) return;
+    window.SNAuth.require('Sign in free to join the discussion.').then(() => { window.SNData.addComment(this.articleId(), t).then(() => { this.setState({ commentText: '' }); this.refreshCommunity(); }); });
+  }
+  onDelete(id) { window.SNData.deleteComment(this.articleId(), id).then(() => this.refreshCommunity()); }
+  dataset(cat) {
+    if (cat === 'metrics') return window.METRICS_CASES;
+    if (cat === 'guesstimates') return window.GUESS_CASES;
+    if (cat === 'improvement') return window.IMPROVE_CASES;
+    if (cat === 'design') return window.DESIGN_CASES;
+    return window.RCA_CASES;
+  }
+  load(tries) {
+    const cat = this.cat;
+    const cases = this.dataset(cat);
+    if (!cases) {
+      if (tries > 0) setTimeout(() => this.load(tries - 1), 80);
+      return;
+    }
+    const slug = new URLSearchParams(location.search).get('case');
+    const c = cases.find(x => x.slug === slug) || cases[0];
+    const label = cat === 'metrics' ? 'Metrics' : cat === 'guesstimates' ? 'Guesstimate' : cat === 'improvement' ? 'Product Improvement' : cat === 'design' ? 'Product Design' : 'RCA';
+    if (c) document.title = c.company + ' ' + label + ' — Shubham Nayak';
+    this.setState({ c, cases });
+    setTimeout(() => this.refreshCommunity(), 0);
+  }
+  renderVals() {
+    const c = this.state.c;
+    if (!c) return { loaded: false, blocks: [], related: [], gated: false, unlocked: false, ratingStars: [], comments: [], noComments: true, commentCount: 0, commentText: '' };
+    const allBlocks = c.body.map(b => {
+      const o = {
+        isP: b.t === 'p', isStep: b.t === 'step', isSub: b.t === 'sub', isNote: b.t === 'note',
+        isCallout: b.t === 'callout', isUl: b.t === 'ul', isQa: b.t === 'qa', isJourney: b.t === 'journey',
+        isCalc: b.t === 'calc', isAnswer: b.t === 'answer', isRice: b.t === 'rice',
+        x: b.x || '', label: b.label || '', items: b.items || [],
+        steps: (b.steps || []).map((s, i, arr) => ({ label: s, arrow: i < arr.length - 1 })),
+        rows: [], riceRows: []
+      };
+      if (b.t === 'calc') {
+        const ns = (b.rows || []).map(r => r.n).filter(v => typeof v === 'number');
+        const maxN = ns.length ? Math.max.apply(null, ns) : 0;
+        o.rows = (b.rows || []).map(r => ({
+          label: r.label, value: r.value,
+          hasBar: typeof r.n === 'number',
+          pct: maxN ? Math.max(6, Math.round((r.n / maxN) * 100)) : 0
+        }));
+      }
+      if (b.t === 'rice') {
+        const ss = (b.rows || []).map(r => r.score);
+        const maxS = ss.length ? Math.max.apply(null, ss) : 0;
+        o.riceRows = (b.rows || []).map(r => ({
+          name: r.name, r: r.r, i: r.i, c: r.c, e: r.e, score: r.score,
+          pct: maxS ? Math.max(8, Math.round((r.score / maxS) * 100)) : 0
+        }));
+      }
+      return o;
+    });
+    const user = this.state.user;
+    const signedIn = !!(user && !user.needsProfile);
+    const blocks = signedIn ? allBlocks : allBlocks.slice(0, this.gateIndex(c.body));
+    const related = this.state.cases.filter(x => x.slug !== c.slug).slice(0, 3);
+    const cat = this.cat || 'rca';
+    const meta = {
+      rca: { label: 'RCA', href: 'RCA.dc.html', h: "Got an RCA you're wrestling with?", s: "Bring me the messy one — untangling these is genuinely my favorite thing." },
+      metrics: { label: 'METRICS', href: 'Metrics.dc.html', h: "Stuck defining metrics for your product?", s: "Tell me about your feature and we'll find its North Star together." },
+      guesstimates: { label: 'GUESSTIMATES', href: 'Guesstimates.dc.html', h: "Got a number you need to estimate?", s: "Throw me a guesstimate — I'll structure it with you, live." },
+      improvement: { label: 'PRODUCT IMPROVEMENT', href: 'Product-Improvement.dc.html', h: "Got a product you want to level up?", s: "Tell me the product — we'll find the users, the pains and the highest-impact fix together." },
+      design: { label: 'PRODUCT DESIGN', href: 'Product-Design.dc.html', h: "Got a design brief to crack?", s: "Bring me a 'how would you design…' — we'll pick the user, the pain and the solution together." }
+    }[cat] || { label: 'RCA', href: 'RCA.dc.html', h: "Got an RCA you're wrestling with?", s: "Bring me the messy one — untangling these is genuinely my favorite thing." };
+    const bmId = cat + ':' + c.slug;
+    const saved = (window.SNBM && window.SNBM.has(bmId));
+    const shownVal = this.state.myRating || Math.round(this.state.avg);
+    const ratingStars = [1, 2, 3, 4, 5].map(n => ({ n, color: n <= shownVal ? '#ff5a3c' : '#d9d4c8', onClick: () => this.onRate(n) }));
+    const avgLabel = this.state.myRating
+      ? ('Your rating: ' + this.state.myRating + '★' + (this.state.avg ? ' · ' + this.state.avg.toFixed(1) + ' average' : ''))
+      : (this.state.avg > 0 ? this.state.avg.toFixed(1) + ' average rating' : 'Be the first to rate this');
+    const isAdmin = !!(window.SNAuth && window.SNAuth.isAdmin && window.SNAuth.isAdmin());
+    const comments = (this.state.comments || []).map(cm => ({
+      id: cm.id, name: cm.name || 'Anonymous', text: cm.text,
+      initial: cm.photo ? '' : ((cm.name || '?').trim().charAt(0).toUpperCase()),
+      meta: (cm.role ? cm.role + ' · ' : '') + this.when(cm.ts),
+      canDelete: isAdmin || (user && cm.uid === user.uid), onDelete: () => this.onDelete(cm.id)
+    }));
+    return {
+      loaded: true, company: c.company, wordmark: c.wordmark, brand: c.brand,
+      title: c.title, readTime: c.readTime, blocks, related,
+      catParam: cat, catLabel: meta.label, backHref: meta.href,
+      ctaHeading: meta.h, ctaSub: meta.s,
+      gated: !signedIn, unlocked: signedIn,
+      ratingStars, avgLabel,
+      comments, commentCount: comments.length, noComments: comments.length === 0,
+      commentText: this.state.commentText,
+      onCommentInput: (e) => this.setState({ commentText: e.target.value }),
+      onPostComment: () => this.onPost(),
+      onUnlock: () => { if (window.SNAuth) window.SNAuth.require('Sign in free to see the full breakdown, rate it, and join the discussion.').then(() => this.setState({ user: window.SNAuth.user })); },
+      bmLabel: saved ? '★ Saved to bookmarks' : '☆ Bookmark this',
+      bmBg: saved ? '#c6f24e' : '#ffffff', bmFg: '#1a1712',
+      onBookmark: () => {
+        if (!window.SNBM) return;
+        window.SNBM.toggle({ id: bmId, title: c.company + ' — ' + meta.label, url: 'CaseStudy.dc.html?cat=' + cat + '&case=' + c.slug, cat: meta.label });
+        this.forceUpdate();
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
