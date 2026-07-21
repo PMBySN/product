@@ -435,26 +435,25 @@ window.SN_FIREBASE = window.SN_FIREBASE || {
     acctMenu.style.cssText = 'position:absolute;left:0;bottom:52px;min-width:190px;background:' + CREAM + ';border:1.5px solid ' + INK + ';border-radius:16px;box-shadow:5px 5px 0 ' + INK + ';padding:8px;display:none;flex-direction:column;gap:2px;';
     acctWrap.appendChild(acctMenu); acctWrap.appendChild(acctBtn);
     document.body.appendChild(acctWrap);
-    // If a header slot (#sn-account-slot) exists now or appears later, move the chip into it (top-center of the header).
-    var slotted = false;
+    // If a header slot (#sn-account-slot) exists, keep the chip inside it — re-inserting whenever
+    // the host framework re-renders the nav and drops our injected node (otherwise it vanishes after sign-in).
+    var usingSlot = false;
     function placeInSlot() {
       var slot = document.getElementById('sn-account-slot');
-      if (!slot || slotted || slot.contains(acctWrap)) return;
-      slotted = true;
-      slot.appendChild(acctWrap);
-      acctWrap.style.cssText = 'position:relative;z-index:9997;font-family:\'Manrope\',sans-serif;';
-      acctMenu.style.cssText = 'position:absolute;left:50%;transform:translateX(-50%);top:52px;min-width:190px;background:' + CREAM + ';border:1.5px solid ' + INK + ';border-radius:16px;box-shadow:5px 5px 0 ' + INK + ';padding:8px;display:none;flex-direction:column;gap:2px;';
-      renderAccount();
+      if (slot && !slot.contains(acctWrap)) {
+        slot.appendChild(acctWrap);
+        acctWrap.style.cssText = 'position:relative;z-index:9997;font-family:\'Manrope\',sans-serif;';
+        acctMenu.style.cssText = 'position:absolute;left:50%;transform:translateX(-50%);top:52px;min-width:190px;background:' + CREAM + ';border:1.5px solid ' + INK + ';border-radius:16px;box-shadow:5px 5px 0 ' + INK + ';padding:8px;display:none;flex-direction:column;gap:2px;';
+        usingSlot = true;
+        renderAccount();
+      }
     }
     placeInSlot();
-    if (!slotted) {
-      var mo = new MutationObserver(function () { placeInSlot(); if (slotted) mo.disconnect(); });
-      mo.observe(document.body, { childList: true, subtree: true });
-      setTimeout(function () { mo.disconnect(); }, 8000);
-    }
+    var mo = new MutationObserver(function () { placeInSlot(); });
+    mo.observe(document.body, { childList: true, subtree: true });
     // In fixed (bottom-left) mode, don't let the chip cross/overlap the footer.
     var clampFooter = function () {
-      if (slotted) return;
+      if (usingSlot) return;
       var footer = document.querySelector('footer');
       var vh = window.innerHeight;
       var bottom = 20;
