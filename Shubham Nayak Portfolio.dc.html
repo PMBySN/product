@@ -29,6 +29,8 @@
     ::selection { background: #c6f24e; color: #1a1712; }
     @keyframes floaty { 0%,100% { transform: translateY(0) rotate(var(--r,0deg)); } 50% { transform: translateY(-8px) rotate(var(--r,0deg)); } }
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    #sn-lib-rail { scrollbar-width: none; }
+    #sn-lib-rail::-webkit-scrollbar { display: none; }
   </style>
 </helmet>
 
@@ -71,8 +73,8 @@
     <!-- resource chips carousel -->
     <div style="display: flex; gap: 18px; margin-top: 24px; align-items:center;">
       <span style="flex-shrink:0; font-family:'JetBrains Mono',monospace; font-size:12px; color:#6f6a60; letter-spacing:0.12em; text-transform:uppercase;">Library →</span>
-      <div style="flex:1; min-width:0; overflow:hidden; -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 32px, #000 calc(100% - 32px), transparent 100%); mask-image:linear-gradient(90deg, transparent 0, #000 32px, #000 calc(100% - 32px), transparent 100%);">
-        <div style="display:flex; gap:12px; width:max-content; padding:5px 0; animation: marquee 34s linear infinite;" style-hover="animation-play-state: paused;">
+      <div id="sn-lib-rail" style="flex:1; min-width:0; overflow-x:auto; overflow-y:hidden; cursor:grab; -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 32px, #000 calc(100% - 32px), transparent 100%); mask-image:linear-gradient(90deg, transparent 0, #000 32px, #000 calc(100% - 32px), transparent 100%);">
+        <div id="sn-lib-track" style="display:flex; gap:12px; width:max-content; padding:5px 0;">
           <a href="RCA.dc.html" style="background:#c6f24e; color:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">RCA</a>
           <a href="Metrics.dc.html" style="background:#5b2fe0; color:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">Metrics</a>
           <a href="Guesstimates.dc.html" style="background:#ff5a3c; color:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">Guesstimates</a>
@@ -254,40 +256,10 @@
     </div>
   </section>
 
-  <!-- ============ TESTIMONIALS ============ -->
-  <section style="max-width: 1200px; margin: 0 auto; padding: 96px 40px 0;">
-    <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
-      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#5b2fe0;">06 — Recommendations</span>
-      <span style="flex:1; height:1.5px; background:#1a1712; opacity:0.15;"></span>
-    </div>
-    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:16px;">
-      <sc-for list="{{ quotes }}" as="q" hint-placeholder-count="3">
-        <div style="background:{{ q.bg }}; color:{{ q.fg }}; border:1.5px solid #1a1712; border-radius:22px; padding:30px 28px; box-shadow: 6px 6px 0 #1a1712; display:flex; flex-direction:column; gap:20px;">
-          <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:54px; line-height:0.4; height:20px;">"</div>
-          <p style="font-size:16px; line-height:1.55; margin:0; font-weight:500;">{{ q.text }}</p>
-          <div style="display:flex; align-items:center; gap:12px; margin-top:auto;">
-            <div onClick="{{ q.onZoom }}" title="Click to zoom" style="width:44px; height:44px; border-radius:50%; border:1.5px solid #1a1712; background:{{ q.avatar }}; overflow:hidden; flex-shrink:0; cursor:zoom-in;">{{ q.avatarEl }}</div>
-            <div><a href="{{ q.linkedin }}" target="_blank" style="font-weight:700; font-size:14px; text-decoration:none;" style-hover="text-decoration:underline;">{{ q.name }}</a><div style="font-size:12.5px; opacity:0.75;">{{ q.role }}</div></div>
-          </div>
-        </div>
-      </sc-for>
-    </div>
-    <div style="margin-top:24px;">
-      <a href="https://www.linkedin.com/in/shubhamnayakximb/details/recommendations/" target="_blank" style="display:inline-flex; align-items:center; gap:10px; background:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:12px 22px; font-weight:700; font-size:14.5px; box-shadow:3px 3px 0 #1a1712;"><span style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; background:#0a66c2; color:#fff; padding:4px 8px; border-radius:6px;">in</span> Read all recommendations on LinkedIn →</a>
-    </div>
-  </section>
-
-  <sc-if value="{{ zoomImg }}">
-    <div onClick="{{ closeZoom }}" style="position:fixed; inset:0; z-index:200; background:rgba(26,23,18,0.92); display:flex; align-items:center; justify-content:center; padding:40px; cursor:zoom-out;">
-      {{ zoomEl }}
-      <div style="position:absolute; top:24px; right:28px; font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600; color:#f4f1ea;">✕ close</div>
-    </div>
-  </sc-if>
-
   <!-- ============ NEWSLETTER / BLOG ============ -->
   <section style="max-width: 1200px; margin: 0 auto; padding: 96px 40px 0;">
     <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
-      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#5b2fe0;">07 — Newsletter &amp; Writing</span>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#5b2fe0;">06 — Newsletter &amp; Writing</span>
       <span style="flex:1; height:1.5px; background:#1a1712; opacity:0.15;"></span>
     </div>
     <div style="color:#1a1712; display:grid; grid-template-columns:0.8fr 1.2fr; background:#fff; border:1.5px solid #1a1712; border-radius:24px; overflow:hidden; box-shadow:8px 8px 0 #1a1712; margin-bottom:24px;">
@@ -301,7 +273,6 @@
         <p style="font-size:16px; line-height:1.6; color:#4a463d; margin:0 0 20px; max-width:520px;">Broke at the end of the month, a campus food fest, and a stack of old newspapers — the scrappy launch that taught me more about product than any textbook ever did.</p>
         <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
           <a href="Newsletters.dc.html?slug=first-product-launch" style="display:inline-flex; align-items:center; gap:9px; background:#c6f24e; color:#1a1712; border:1.5px solid #1a1712; border-radius:12px; padding:13px 22px; font-weight:800; font-size:15px; white-space:nowrap; box-shadow:4px 4px 0 #5b2fe0;" style-hover="transform: translate(-2px,-2px); box-shadow:6px 6px 0 #5b2fe0;">Read the full story →</a>
-          <a href="Newsletters.dc.html" style="color:#5b2fe0; font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600;">All issues →</a>
         </div>
       </div>
     </div>
@@ -336,6 +307,36 @@
       </div>
     </div>
   </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section style="max-width: 1200px; margin: 0 auto; padding: 96px 40px 0;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#5b2fe0;">07 — Recommendations</span>
+      <span style="flex:1; height:1.5px; background:#1a1712; opacity:0.15;"></span>
+    </div>
+    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:16px;">
+      <sc-for list="{{ quotes }}" as="q" hint-placeholder-count="3">
+        <div style="background:{{ q.bg }}; color:{{ q.fg }}; border:1.5px solid #1a1712; border-radius:22px; padding:30px 28px; box-shadow: 6px 6px 0 #1a1712; display:flex; flex-direction:column; gap:20px;">
+          <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:54px; line-height:0.4; height:20px;">"</div>
+          <p style="font-size:16px; line-height:1.55; margin:0; font-weight:500;">{{ q.text }}</p>
+          <div style="display:flex; align-items:center; gap:12px; margin-top:auto;">
+            <div onClick="{{ q.onZoom }}" title="Click to zoom" style="width:44px; height:44px; border-radius:50%; border:1.5px solid #1a1712; background:{{ q.avatar }}; overflow:hidden; flex-shrink:0; cursor:zoom-in;">{{ q.avatarEl }}</div>
+            <div><a href="{{ q.linkedin }}" target="_blank" style="font-weight:700; font-size:14px; text-decoration:none;" style-hover="text-decoration:underline;">{{ q.name }}</a><div style="font-size:12.5px; opacity:0.75;">{{ q.role }}</div></div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:24px;">
+      <a href="https://www.linkedin.com/in/shubhamnayakximb/details/recommendations/" target="_blank" style="display:inline-flex; align-items:center; gap:10px; background:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:12px 22px; font-weight:700; font-size:14.5px; box-shadow:3px 3px 0 #1a1712;"><span style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; background:#0a66c2; color:#fff; padding:4px 8px; border-radius:6px;">in</span> Read all recommendations on LinkedIn →</a>
+    </div>
+  </section>
+
+  <sc-if value="{{ zoomImg }}">
+    <div onClick="{{ closeZoom }}" style="position:fixed; inset:0; z-index:200; background:rgba(26,23,18,0.92); display:flex; align-items:center; justify-content:center; padding:40px; cursor:zoom-out;">
+      {{ zoomEl }}
+      <div style="position:absolute; top:24px; right:28px; font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600; color:#f4f1ea;">✕ close</div>
+    </div>
+  </sc-if>
 
   <!-- ============ CONTACT / HIRE + WHATSAPP ============ -->
   <section id="contact" style="max-width: 1200px; margin: 0 auto; padding: 96px 40px 100px;">
@@ -447,7 +448,35 @@ class Component extends DCLogic {
     this.scrollToHash();
     window.addEventListener("hashchange", () => this.scrollToHash());
     this.waitData(20);
+    this.initLibRail();
   }
+
+  initLibRail = (tries) => {
+    const rail = document.getElementById("sn-lib-rail");
+    const track = document.getElementById("sn-lib-track");
+    if (!rail || !track) { if ((tries || 0) < 40) setTimeout(() => this.initLibRail((tries || 0) + 1), 100); return; }
+    if (rail.__snInit) return; rail.__snInit = true;
+    let paused = false, rt = null, down = false, sx = 0, sl = 0, moved = false;
+    const half = () => track.scrollWidth / 2;
+    const pauseNow = () => { paused = true; if (rt) clearTimeout(rt); };
+    const resumeLater = () => { if (rt) clearTimeout(rt); rt = setTimeout(() => { paused = false; }, 500); };
+    const tick = () => {
+      if (!paused && !down) { rail.scrollLeft += 0.5; if (rail.scrollLeft >= half()) rail.scrollLeft -= half(); }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    rail.addEventListener("pointerenter", pauseNow);
+    rail.addEventListener("pointerleave", () => { if (!down) resumeLater(); });
+    rail.addEventListener("wheel", () => { pauseNow(); resumeLater(); }, { passive: true });
+    rail.addEventListener("touchstart", pauseNow, { passive: true });
+    rail.addEventListener("touchend", resumeLater);
+    rail.addEventListener("pointerdown", (e) => { down = true; moved = false; sx = e.clientX; sl = rail.scrollLeft; rail.style.cursor = "grabbing"; pauseNow(); });
+    window.addEventListener("pointermove", (e) => { if (!down) return; const dx = e.clientX - sx; if (Math.abs(dx) > 4) moved = true; rail.scrollLeft = sl - dx; });
+    window.addEventListener("pointerup", () => { if (down) { down = false; rail.style.cursor = "grab"; resumeLater(); } });
+    rail.addEventListener("click", (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+    rail.addEventListener("scroll", () => { if (rail.scrollLeft <= 0) rail.scrollLeft += half(); });
+    rail.scrollLeft = 1;
+  };
 
   waitData = (tries) => {
     if (window.RCA_CASES && window.METRICS_CASES && window.GUESS_CASES && window.IMPROVE_CASES && window.DESIGN_CASES && window.PERSONAL_INSIGHTS && window.MARKET_UPDATES) { this.forceUpdate(); return; }
