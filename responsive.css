@@ -1,0 +1,56 @@
+/* Mobile responsiveness for Shubham Nayak's PM site.
+   Overrides the inline desktop layout at small widths ONLY. No logic or data changes.
+   Loaded via <link rel="stylesheet" href="responsive.css"> in every page's <helmet>. */
+
+@media (max-width: 820px) {
+  /* Collapse every multi-column grid (hero, cards, library, playbooks, contact, forms) to one column */
+  [style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+
+  /* Trim the big outer paddings that cause horizontal overflow */
+  section, header, footer, article { padding-left: 22px !important; padding-right: 22px !important; }
+  nav { padding-left: 16px !important; padding-right: 16px !important; }
+  [style*="padding: 0 40px"], [style*="padding:0 40px"] { padding-left: 20px !important; padding-right: 20px !important; }
+  [style*="padding: 52px"], [style*="padding: 46px"], [style*="padding: 44px"],
+  [style*="padding: 42px"], [style*="padding: 40px"], [style*="padding: 38px"],
+  [style*="padding: 36px"], [style*="padding: 34px"] {
+    padding-left: 24px !important; padding-right: 24px !important;
+  }
+
+  /* Cap oversized display type so headlines stop overlapping */
+  h1 { font-size: 40px !important; line-height: 1.04 !important; }
+  h2 { font-size: 30px !important; line-height: 1.08 !important; }
+  h3 { font-size: 23px !important; }
+
+  body { overflow-x: hidden; }
+}
+
+@media (max-width: 520px) {
+  section, header, footer, article { padding-left: 16px !important; padding-right: 16px !important; }
+  [style*="padding: 52px"], [style*="padding: 46px"], [style*="padding: 44px"],
+  [style*="padding: 42px"], [style*="padding: 40px"], [style*="padding: 38px"],
+  [style*="padding: 36px"], [style*="padding: 34px"], [style*="padding: 32px"] {
+    padding-left: 18px !important; padding-right: 18px !important;
+  }
+  [style*="padding: 0 40px"], [style*="padding:0 40px"] { padding-left: 16px !important; padding-right: 16px !important; }
+
+  h1 { font-size: 31px !important; }
+  h2 { font-size: 25px !important; }
+  h3 { font-size: 21px !important; }
+
+  /* Keep the floating share/action buttons out of the way and tappable */
+  #sn-share-root { right: 14px !important; bottom: 14px !important; }
+}
+
+@media (max-width: 640px) {
+  /* Compact home-page nav (Option A): avatar-only profile, icon-only Contribute, tighter row —
+     stops the logo / profile / Contribute / Hire-me from colliding on phones. */
+  nav { padding-top: 10px !important; padding-bottom: 10px !important; gap: 10px !important; }
+  nav > div:last-child { gap: 10px !important; }
+  /* Profile chip -> just the round avatar (drop the name text) */
+  #sn-account-slot button span:last-child { display: none !important; }
+  #sn-account-slot button { padding: 6px !important; gap: 0 !important; }
+  /* "Contribute +" -> icon-only "+" (font-size:0 hides the word; the + span keeps its own size) */
+  nav button[title="Contribute a success story"] { font-size: 0 !important; gap: 0 !important; padding: 9px 13px !important; }
+  /* "Hire me" -> a touch tighter */
+  nav a[href="#contact"] { padding: 9px 13px !important; }
+}
