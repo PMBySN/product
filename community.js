@@ -22,7 +22,7 @@
     var btn = document.createElement("button");
     btn.id = "sn-view-toggle";
     btn.type = "button";
-    btn.style.cssText = "position:fixed;left:14px;bottom:14px;z-index:80;background:#f4f1ea;color:" + INK + ";border:1.5px solid " + INK + ";border-radius:999px;padding:8px 14px;font-family:'JetBrains Mono',monospace;font-weight:600;font-size:12px;cursor:pointer;box-shadow:3px 3px 0 " + INK + ";-webkit-tap-highlight-color:transparent;";
+    btn.style.cssText = "position:fixed;left:16px;bottom:16px;z-index:80;background:#c6f24e;color:" + INK + ";border:2px solid " + INK + ";border-radius:999px;padding:13px 20px;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:15px;line-height:1;cursor:pointer;box-shadow:4px 4px 0 " + INK + ";-webkit-tap-highlight-color:transparent;";
     btn.textContent = label(get());
     btn.onclick = function () {
       var next = get() === "mobile" ? "desktop" : "mobile";
