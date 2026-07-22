@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="responsive.css">
+  <script src="./insights-articles-data.js"></script>
+  <script src="./bookmarks.js"></script>
+  <script src="./community.js"></script>
+  <script src="./share.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #e9e7e2; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: #c6f24e; color: #1a1712; }
+  </style>
+</helmet>
+
+<div style="font-family: 'Manrope', sans-serif; background: #e9e7e2; color: #1a1712;">
+  <nav style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; background: #f4f1eaee; backdrop-filter: blur(8px); border-bottom: 1.5px solid #1a1712;">
+    <a href="Shubham Nayak Portfolio.dc.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -0.01em;">SN<span style="color:#5b2fe0;">.</span></a>
+    <a href="Personal-Insights.dc.html" style="font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600;">← All lessons</a>
+    <a href="Shubham Nayak Portfolio.dc.html#contact" style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; background:#5b2fe0; color:#fff; padding:9px 17px; border-radius:999px; border:1.5px solid #1a1712; box-shadow: 2px 2px 0 #1a1712;">Hire me →</a>
+  </nav>
+
+  <sc-if value="{{ loaded }}" hint-placeholder-val="{{ false }}">
+    <header style="max-width: 820px; margin: 0 auto; padding: 52px 40px 30px;">
+      <div style="display:flex; align-items:center; gap:14px; margin-bottom:26px; flex-wrap:wrap;">
+        <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:22px; background:{{ accent }}; color:{{ accentFg }}; border:1.5px solid #1a1712; border-radius:12px; width:48px; height:48px; display:flex; align-items:center; justify-content:center; box-shadow:3px 3px 0 #1a1712;">{{ num }}</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; background:#5b2fe0; color:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:5px 12px;">PERSONAL INSIGHT</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; background:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:5px 12px;">{{ tag }}</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6f6a60;">{{ readTime }}</span>
+      </div>
+      <h1 style="font-family:'Bricolage Grotesque',sans-serif; font-size:48px; line-height:1.0; margin:0; font-weight:800; letter-spacing:-0.03em; text-wrap:pretty;">{{ title }}</h1>
+      <button onClick="{{ onBookmark }}" style="margin-top:24px; display:inline-flex; align-items:center; gap:8px; background:{{ bmBg }}; color:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:11px 20px; font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600; cursor:pointer; box-shadow:3px 3px 0 #1a1712;">{{ bmLabel }}</button>
+    </header>
+
+    <article style="max-width: 740px; margin: 0 auto; padding: 6px 40px 20px; display:flex; flex-direction:column; gap:22px;">
+      <sc-for list="{{ blocks }}" as="b" hint-placeholder-count="10">
+        <sc-if value="{{ b.isP }}"><p style="font-size:17.5px; line-height:1.7; color:#33302a; margin:0; text-wrap:pretty;">{{ b.x }}</p></sc-if>
+
+        <sc-if value="{{ b.isStep }}">
+          <div style="display:flex; align-items:center; gap:14px; margin-top:24px;">
+            <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:14px; background:#1a1712; color:#f4f1ea; border:1.5px solid #1a1712; border-radius:10px; padding:6px 12px; white-space:nowrap; box-shadow:3px 3px 0 {{ accent }};">{{ b.label }}</span>
+            <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-size:27px; font-weight:800; letter-spacing:-0.02em; margin:0; line-height:1.1;">{{ b.x }}</h2>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isSub }}"><h3 style="font-family:'Bricolage Grotesque',sans-serif; font-size:20px; font-weight:800; letter-spacing:-0.01em; margin:8px 0 -6px; color:#5b2fe0;">{{ b.x }}</h3></sc-if>
+
+        <sc-if value="{{ b.isNote }}">
+          <div style="background:#c6f24e; border:1.5px solid #1a1712; border-radius:16px; padding:18px 22px; box-shadow:4px 4px 0 #1a1712; display:flex; gap:12px; align-items:flex-start;">
+            <span style="font-size:20px; line-height:1.4;">💡</span>
+            <div style="font-size:16.5px; line-height:1.55; font-weight:600; color:#1a1712;">{{ b.x }}</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isCallout }}">
+          <div style="background:#5b2fe0; color:#fff; border:1.5px solid #1a1712; border-radius:18px; padding:26px 28px; box-shadow:6px 6px 0 #1a1712;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; opacity:0.85; margin-bottom:10px;">{{ b.label }}</div>
+            <div style="font-size:18.5px; line-height:1.5; font-weight:600;">{{ b.x }}</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isUl }}">
+          <div style="display:flex; flex-direction:column; gap:11px;">
+            <sc-for list="{{ b.items }}" as="it" hint-placeholder-count="3">
+              <div style="display:flex; gap:12px; align-items:flex-start;">
+                <span style="color:#ff5a3c; font-weight:800; font-size:18px; line-height:1.5;">→</span>
+                <span style="font-size:16.5px; line-height:1.58; color:#33302a;">{{ it }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isJourney }}">
+          <div style="background:#fff; border:1.5px solid #1a1712; border-radius:18px; padding:22px 24px; box-shadow:5px 5px 0 #1a1712;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.1em; text-transform:uppercase; color:#5b2fe0; margin-bottom:14px;">{{ b.label }}</div>
+            <div style="display:flex; flex-wrap:wrap; align-items:center; gap:8px;">
+              <sc-for list="{{ b.steps }}" as="st" hint-placeholder-count="4">
+                <span style="background:#f4f1ea; border:1.5px solid #1a1712; border-radius:10px; padding:9px 13px; font-size:13.5px; font-weight:700;">{{ st.label }}</span>
+                <sc-if value="{{ st.arrow }}"><span style="color:#5b2fe0; font-weight:800;">→</span></sc-if>
+              </sc-for>
+            </div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isAnswer }}">
+          <div style="background:#ff5a3c; color:#fff; border:1.5px solid #1a1712; border-radius:18px; padding:28px; box-shadow:6px 6px 0 #1a1712; text-align:center;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; opacity:0.9; margin-bottom:10px;">{{ b.label }}</div>
+            <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:38px; letter-spacing:-0.02em; line-height:1.03;">{{ b.x }}</div>
+          </div>
+        </sc-if>
+      </sc-for>
+
+      <sc-if value="{{ gated }}">
+        <div style="margin-top:-30px;">
+          <div style="height:110px; background:linear-gradient(to bottom, rgba(233,231,226,0), #e9e7e2); margin-bottom:6px;"></div>
+          <div style="text-align:center; background:#fff; border:1.5px solid #1a1712; border-radius:22px; padding:34px 30px; box-shadow:7px 7px 0 #5b2fe0;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#5b2fe0; margin-bottom:10px;">Keep reading — it's free</div>
+            <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:30px; font-weight:800; letter-spacing:-0.02em; line-height:1.05; margin-bottom:10px; text-wrap:pretty;">Sign in to finish this lesson</div>
+            <p style="font-size:16px; line-height:1.6; color:#4a463d; max-width:460px; margin:0 auto 22px;">You're just getting to the good part. A free account unlocks the full lesson, and lets you rate it, comment, and join the forum — 10 seconds, no cost, ever.</p>
+            <button onClick="{{ onUnlock }}" style="display:inline-flex; align-items:center; gap:8px; background:#c6f24e; color:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:14px 28px; font-weight:800; font-size:16px; cursor:pointer; box-shadow:4px 4px 0 #1a1712;">Sign in / Create free account →</button>
+          </div>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ unlocked }}">
+        <div style="background:#1a1712; color:#f4f1ea; border:1.5px solid #1a1712; border-radius:16px; padding:18px 20px; box-shadow:4px 4px 0 #c6f24e; margin-top:22px;">
+          <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:18px; font-weight:800; letter-spacing:-0.015em; margin-bottom:6px;">🎯 Lesson complete — you're closer than you were.</div>
+          <div style="font-size:14px; line-height:1.5; color:#d8d3c7; margin-bottom:13px;">{{ progressText }}</div>
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div style="flex:1; height:9px; background:#33302a; border:1.5px solid #f4f1ea; border-radius:6px; overflow:hidden;"><div style="height:100%; width:{{ progressPct }}%; background:#c6f24e; transition:width .5s ease;"></div></div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#c6f24e; letter-spacing:0.05em; white-space:nowrap;">{{ readCount }}/{{ total }}</div>
+          </div>
+        </div>
+
+        <div style="background:#fff; border:1.5px solid #1a1712; border-radius:18px; padding:20px 24px; box-shadow:5px 5px 0 #1a1712; margin-top:20px; display:flex; align-items:center; justify-content:space-between; gap:18px; flex-wrap:wrap;">
+          <div>
+            <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:19px; font-weight:800; letter-spacing:-0.01em;">Was this helpful?</div>
+            <div style="font-size:13.5px; color:#6f6a60; margin-top:3px;">{{ avgLabel }}</div>
+          </div>
+          <div style="display:flex; gap:5px;">
+            <sc-for list="{{ ratingStars }}" as="s" hint-placeholder-count="5">
+              <button onClick="{{ s.onClick }}" title="Rate this lesson" style="background:none; border:none; cursor:pointer; font-size:32px; line-height:1; color:{{ s.color }}; padding:0;">★</button>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="margin-top:28px;">
+          <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:22px; font-weight:800; letter-spacing:-0.02em; margin-bottom:14px;">Comments ({{ commentCount }})</div>
+          <textarea value="{{ commentText }}" onInput="{{ onCommentInput }}" placeholder="Share a thought, a question, your own take…" style="width:100%; box-sizing:border-box; min-height:74px; border:1.5px solid #1a1712; border-radius:14px; padding:13px 15px; font-family:'Manrope',sans-serif; font-size:15px; resize:vertical;"></textarea>
+          <div style="text-align:right; margin:10px 0 22px;">
+            <button onClick="{{ onPostComment }}" style="background:#5b2fe0; color:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:11px 22px; font-weight:700; font-size:14px; cursor:pointer; box-shadow:3px 3px 0 #1a1712;">Post comment</button>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <sc-for list="{{ comments }}" as="c" hint-placeholder-count="0">
+              <div style="background:#fff; border:1.5px solid #1a1712; border-radius:16px; padding:16px 18px; box-shadow:3px 3px 0 #1a1712;">
+                <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                  <div style="width:34px; height:34px; flex:none; border-radius:999px; border:1.5px solid #1a1712; background:#c6f24e; display:flex; align-items:center; justify-content:center; font-weight:800; font-family:'Bricolage Grotesque',sans-serif; font-size:15px; overflow:hidden;">{{ c.initial }}</div>
+                  <div style="flex:1;">
+                    <div style="font-weight:700; font-size:14.5px;">{{ c.name }}</div>
+                    <div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#6f6a60;">{{ c.meta }}</div>
+                  </div>
+                  <sc-if value="{{ c.canDelete }}"><button onClick="{{ c.onDelete }}" style="background:#f4f1ea; border:1.5px solid #1a1712; border-radius:8px; padding:4px 9px; font-size:11px; cursor:pointer; font-family:'JetBrains Mono',monospace;">delete</button></sc-if>
+                </div>
+                <div style="font-size:15.5px; line-height:1.55; color:#33302a; white-space:pre-wrap;">{{ c.text }}</div>
+              </div>
+            </sc-for>
+            <sc-if value="{{ noComments }}"><div style="font-size:15px; color:#6f6a60; padding:6px 2px;">No comments yet — be the first to say something.</div></sc-if>
+          </div>
+        </div>
+      </sc-if>
+    </article>
+
+    <section style="max-width: 1160px; margin: 0 auto; padding: 44px 40px 20px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#5b2fe0; margin-bottom:18px;">Keep the momentum — read another</div>
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px;">
+        <sc-for list="{{ related }}" as="r" hint-placeholder-count="3">
+          <a href="Insight.dc.html?slug={{ r.slug }}" style="display:flex; gap:16px; align-items:flex-start; background:#fff; border:1.5px solid #1a1712; border-radius:20px; padding:22px 22px; box-shadow:5px 5px 0 #1a1712;" style-hover="transform: translate(-2px,-2px); box-shadow:7px 7px 0 #1a1712;">
+            <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:18px; background:{{ r.accent }}; color:{{ r.accentFg }}; border:1.5px solid #1a1712; border-radius:10px; width:40px; height:40px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">{{ r.num }}</span>
+            <div>
+              <div style="font-size:16px; font-weight:700; line-height:1.25; letter-spacing:-0.01em;">{{ r.title }}</div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#6f6a60; margin-top:8px; letter-spacing:0.05em;">{{ r.readTime }}</div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ notFound }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:640px; margin:0 auto; padding:80px 40px; text-align:center;">
+      <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:32px; font-weight:800; margin-bottom:12px;">This lesson is still being written.</div>
+      <p style="font-size:16.5px; color:#4a463d; line-height:1.6; margin:0 0 24px;">Hang tight — it's coming. In the meantime, there's plenty more waiting for you.</p>
+      <a href="Personal-Insights.dc.html" style="display:inline-block; background:#1a1712; color:#f4f1ea; border:1.5px solid #1a1712; border-radius:999px; padding:14px 28px; font-weight:700;">← Back to all lessons</a>
+    </div>
+  </sc-if>
+
+  <footer style="background:#1a1712; color:#b8b3a8; padding:36px 0; margin-top:40px;">
+    <div style="max-width:1160px; margin:0 auto; padding:0 40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+      <a href="Shubham Nayak Portfolio.dc.html" style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:20px; color:#f4f1ea;">Shubham Nayak<span style="color:#c6f24e;">.</span></a>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px;">© 2026 · Free resource · Made to help you win</div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { a: null, ready: false, user: null, avg: 0, myRating: 0, comments: [], commentText: "" };
+  componentDidMount() {
+    this.slug = new URLSearchParams(location.search).get("slug") || "";
+    this.load(25);
+    this._bm = () => this.forceUpdate();
+    window.addEventListener("snbm:change", this._bm);
+    this._auth = () => { this.setState({ user: (window.SNAuth && window.SNAuth.user) || null }); this.refreshCommunity(); };
+    window.addEventListener("snauth:change", this._auth);
+    this.setState({ user: (window.SNAuth && window.SNAuth.user) || null });
+  }
+  componentWillUnmount() {
+    if (this._bm) window.removeEventListener("snbm:change", this._bm);
+    if (this._auth) window.removeEventListener("snauth:change", this._auth);
+  }
+  articleId() { return "insight:" + this.slug; }
+  refreshCommunity() {
+    if (!this.state.a || !window.SNData) return;
+    window.SNData.getRating(this.articleId()).then(r => this.setState({ avg: r.avg, myRating: r.mine }));
+    window.SNData.listComments(this.articleId()).then(list => this.setState({ comments: list }));
+  }
+  load(tries) {
+    if (!window.INSIGHT_ARTICLES) { if (tries > 0) setTimeout(() => this.load(tries - 1), 80); return; }
+    const a = window.INSIGHT_ARTICLES.find(x => x.slug === this.slug) || null;
+    if (a) {
+      document.title = a.title + " — Shubham Nayak";
+      let read = {};
+      try { read = JSON.parse(localStorage.getItem("insightsRead_v1") || "{}") || {}; } catch (e) {}
+      read[a.slug] = 1;
+      try { localStorage.setItem("insightsRead_v1", JSON.stringify(read)); } catch (e) {}
+    }
+    window.snShare = a ? { title: a.title, accent: a.accent } : null;
+    this.setState({ a, ready: true });
+    setTimeout(() => this.refreshCommunity(), 0);
+  }
+  fg(bg) { return (bg === "#c6f24e") ? "#1a1712" : "#ffffff"; }
+  gateIndex(blocks) {
+    let s = 0;
+    for (let i = 0; i < blocks.length; i++) { if (blocks[i].t === "step") { s++; if (s === 2) return i; } }
+    return Math.max(3, Math.ceil(blocks.length * 0.4));
+  }
+  when(ts) {
+    const d = Date.now() - ts; const m = Math.floor(d / 60000);
+    if (m < 1) return "just now"; if (m < 60) return m + "m ago";
+    const h = Math.floor(m / 60); if (h < 24) return h + "h ago";
+    return Math.floor(h / 24) + "d ago";
+  }
+  onRate(n) {
+    if (!window.SNAuth) return;
+    window.SNAuth.require("Sign in free to rate this lesson.").then(() => {
+      this.setState({ myRating: n });
+      window.SNData.setRating(this.articleId(), n).then(() => this.refreshCommunity());
+    });
+  }
+  onPost() {
+    const t = (this.state.commentText || "").trim(); if (!t) return;
+    window.SNAuth.require("Sign in free to join the discussion.").then(() => {
+      window.SNData.addComment(this.articleId(), t).then(() => { this.setState({ commentText: "" }); this.refreshCommunity(); });
+    });
+  }
+  onDelete(id) { window.SNData.deleteComment(this.articleId(), id).then(() => this.refreshCommunity()); }
+  renderVals() {
+    const base = { loaded: false, notFound: false, blocks: [], related: [], gated: false, unlocked: false, ratingStars: [], comments: [], noComments: true, commentCount: 0, commentText: "" };
+    if (!this.state.ready) return base;
+    const a = this.state.a;
+    if (!a) return Object.assign(base, { notFound: true });
+    const mapBlock = b => ({
+      isP: b.t === "p", isStep: b.t === "step", isSub: b.t === "sub", isNote: b.t === "note",
+      isCallout: b.t === "callout", isUl: b.t === "ul", isJourney: b.t === "journey", isAnswer: b.t === "answer",
+      x: b.x || "", label: b.label || "", items: b.items || [],
+      steps: (b.steps || []).map((s, i, arr) => ({ label: s, arrow: i < arr.length - 1 }))
+    });
+    const user = this.state.user;
+    const signedIn = !!(user && !user.needsProfile);
+    const raw = a.body;
+    const shown = signedIn ? raw : raw.slice(0, this.gateIndex(raw));
+    const blocks = shown.map(mapBlock);
+    const all = window.INSIGHT_ARTICLES || [];
+    const related = all.filter(x => x.slug !== a.slug).slice(0, 3).map(x => ({
+      slug: x.slug, num: x.num, title: x.title, readTime: x.readTime, accent: x.accent, accentFg: this.fg(x.accent)
+    }));
+    let read = {};
+    try { read = JSON.parse(localStorage.getItem("insightsRead_v1") || "{}") || {}; } catch (e) {}
+    const total = all.length;
+    const readCount = all.filter(x => read[x.slug]).length;
+    const pct = total ? Math.round((readCount / total) * 100) : 0;
+    const left = total - readCount;
+    const progressText = left <= 0
+      ? "You've read every lesson here. That's not nothing — that's discipline. You're becoming the PM you set out to be."
+      : "Each lesson you finish is a rep your future self will thank you for. " + left + " more and you'll have read them all — keep the streak alive.";
+    const shownVal = this.state.myRating || Math.round(this.state.avg);
+    const ratingStars = [1, 2, 3, 4, 5].map(n => ({ n, color: n <= shownVal ? "#ff5a3c" : "#d9d4c8", onClick: () => this.onRate(n) }));
+    const avgLabel = this.state.myRating
+      ? ("Your rating: " + this.state.myRating + "★" + (this.state.avg ? " · " + this.state.avg.toFixed(1) + " average" : ""))
+      : (this.state.avg > 0 ? this.state.avg.toFixed(1) + " average rating" : "Be the first to rate this");
+    const isAdmin = !!(window.SNAuth && window.SNAuth.isAdmin && window.SNAuth.isAdmin());
+    const comments = (this.state.comments || []).map(c => ({
+      id: c.id, name: c.name || "Anonymous", text: c.text,
+      initial: c.photo ? "" : ((c.name || "?").trim().charAt(0).toUpperCase()),
+      meta: (c.role ? c.role + " · " : "") + this.when(c.ts),
+      canDelete: isAdmin || (user && c.uid === user.uid),
+      onDelete: () => this.onDelete(c.id)
+    }));
+    const bmId = "insight:" + a.slug;
+    const saved = !!(window.SNBM && window.SNBM.has(bmId));
+    return {
+      loaded: true, notFound: false,
+      num: a.num, title: a.title, tag: a.tag, readTime: a.readTime,
+      accent: a.accent, accentFg: this.fg(a.accent),
+      blocks, related, readCount, total, progressPct: pct, progressText,
+      gated: !signedIn, unlocked: signedIn,
+      ratingStars, avgLabel,
+      comments, commentCount: comments.length, noComments: comments.length === 0,
+      commentText: this.state.commentText,
+      onCommentInput: (e) => this.setState({ commentText: e.target.value }),
+      onPostComment: () => this.onPost(),
+      onUnlock: () => { if (window.SNAuth) window.SNAuth.require("Sign in free to finish this lesson, rate it, and join the discussion.").then(() => this.setState({ user: window.SNAuth.user })); },
+      bmLabel: saved ? "★ Saved to bookmarks" : "☆ Bookmark this",
+      bmBg: saved ? "#c6f24e" : "#ffffff",
+      onBookmark: () => {
+        if (!window.SNBM) return;
+        window.SNBM.toggle({ id: bmId, title: a.title, url: "Insight.dc.html?slug=" + a.slug, cat: "Personal Insight" });
+        this.forceUpdate();
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
