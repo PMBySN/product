@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="responsive.css">
+  <script src="./casestudies-data.js"></script>
+  <script src="./metrics-data.js"></script>
+  <script src="./guesstimates-data.js"></script>
+  <script src="./improvement-data.js"></script>
+  <script src="./design-data.js"></script>
+  <script src="./personal-insights-data.js"></script>
+  <script src="./bookmarks.js"></script>
+  <script src="./community.js"></script>
+  <script src="./market-updates-data.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #e9e7e2; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: #c6f24e; color: #1a1712; }
+    @keyframes floaty { 0%,100% { transform: translateY(0) rotate(var(--r,0deg)); } 50% { transform: translateY(-8px) rotate(var(--r,0deg)); } }
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    #sn-lib-rail { scrollbar-width: none; }
+    #sn-lib-rail::-webkit-scrollbar { display: none; }
+  </style>
+</helmet>
+
+<div style="font-family: 'Manrope', sans-serif; background: #e9e7e2; color: #1a1712; overflow-x: hidden;">
+
+  <!-- ============ NAV ============ -->
+  <nav style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 16px 40px; background: #f4f1eaee; backdrop-filter: blur(8px); border-bottom: 1.5px solid #1a1712;">
+    <a href="#top" style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -0.01em;">SN<span style="color:#5b2fe0;">.</span></a>
+    <div id="sn-account-slot"></div>
+    <div style="display:flex; align-items:center; gap:18px;">
+      <button onClick="{{ openSuccess }}" title="Contribute a success story" style="display:inline-flex; align-items:center; gap:8px; flex-shrink:0; border-radius:999px; border:1.5px solid #1a1712; background:#c6f24e; color:#1a1712; font-family:'JetBrains Mono',monospace; font-weight:600; font-size:12px; padding:9px 16px; cursor:pointer; box-shadow:2px 2px 0 #1a1712; white-space:nowrap;" style-hover="transform: translate(-1px,-1px); box-shadow:3px 3px 0 #1a1712;">Contribute <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:17px; line-height:1;">+</span></button>
+      <a href="#contact" style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; background:#5b2fe0; color:#fff; padding:9px 17px; border-radius:999px; border:1.5px solid #1a1712; box-shadow: 2px 2px 0 #1a1712;">Hire me →</a>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <section id="top" style="max-width: 1200px; margin: 0 auto; padding: 44px 40px 0;">
+    <div style="border-radius: 28px; overflow: hidden; border: 1.5px solid #1a1712; background: #f4f1ea; box-shadow: 10px 12px 0 #1a1712;">
+      <div style="display: grid; grid-template-columns: 1.35fr 1fr;">
+        <div style="padding: 52px 46px 48px;">
+          <div style="display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1.5px solid #1a1712; border-radius: 999px; padding: 7px 15px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; margin-bottom: 26px; box-shadow: 3px 3px 0 #1a1712;">
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: #2f9e44; display:inline-block;"></span> Product Manager @ Scholarin
+          </div>
+          <h1 style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 68px; line-height: 0.94; margin: 0; font-weight: 800; letter-spacing: -0.035em;">Building products,<br>and the <span style="position: relative; display: inline-block; color: #5b2fe0;">people<svg viewBox="0 0 220 20" style="position:absolute; left:0; bottom:-10px; width:100%; height:14px;" preserveAspectRatio="none"><path d="M4 12 Q 70 4 130 10 T 216 8" stroke="#5b2fe0" stroke-width="4" fill="none" stroke-linecap="round"/></svg></span><br>who build them.</h1>
+          <p style="font-size: 16.5px; line-height: 1.55; color: #4a463d; max-width: 440px; margin: 26px 0 32px;">A portfolio of my product work at Scholarin — and a free, growing library of the exact frameworks, RCAs and guesstimates I use to help beginners break into product management.</p>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+            <a href="#work" style="background: #1a1712; color: #f4f1ea; font-weight: 700; font-size: 15px; padding: 15px 28px; border-radius: 999px; border:1.5px solid #1a1712;">Explore my work</a>
+            <a href="#resources" style="background: #c6f24e; border: 1.5px solid #1a1712; font-weight: 700; font-size: 15px; padding: 15px 28px; border-radius: 999px; box-shadow: 3px 3px 0 #1a1712;">Free study library →</a>
+          </div>
+        </div>
+        <div style="background: #5b2fe0; border-left: 1.5px solid #1a1712; position: relative; padding: 34px; display: flex; align-items: center; justify-content: center; min-height: 440px; overflow: hidden;">
+          <div style="position:absolute; inset:0; background-image: radial-gradient(#ffffff33 1.4px, transparent 1.4px); background-size: 18px 18px;"></div>
+          <img src="images/shubham-hero.jpg" alt="Shubham Nayak" style="width: 262px; height: 328px; border: 1.5px solid #1a1712; border-radius: 18px; object-fit: cover; object-position: center 30%; position: relative; z-index: 1;">
+          <div style="position: absolute; top: 42px; right: 24px; background: #c6f24e; color: #1a1712; border: 1.5px solid #1a1712; padding: 8px 14px; border-radius: 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; transform: rotate(7deg); --r:7deg; animation: floaty 4s ease-in-out infinite; z-index:2; box-shadow: 3px 3px 0 #1a1712;">3+ yrs shipping</div>
+          <div style="position: absolute; bottom: 48px; left: 18px; background: #ff5a3c; color: #fff; border: 1.5px solid #1a1712; padding: 8px 14px; border-radius: 12px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; transform: rotate(-6deg); --r:-6deg; animation: floaty 5s ease-in-out infinite; z-index:2; box-shadow: 3px 3px 0 #1a1712;">100+ free guides</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- resource chips carousel -->
+    <div style="display: flex; gap: 18px; margin-top: 24px; align-items:center;">
+      <span style="flex-shrink:0; font-family:'JetBrains Mono',monospace; font-size:12px; color:#6f6a60; letter-spacing:0.12em; text-transform:uppercase;">Library →</span>
+      <div id="sn-lib-rail" style="flex:1; min-width:0; overflow-x:auto; overflow-y:hidden; cursor:grab; -webkit-mask-image:linear-gradient(90deg, transparent 0, #000 32px, #000 calc(100% - 32px), transparent 100%); mask-image:linear-gradient(90deg, transparent 0, #000 32px, #000 calc(100% - 32px), transparent 100%);">
+        <div id="sn-lib-track" style="display:flex; gap:12px; width:max-content; padding:5px 0;">
+          <a href="RCA.dc.html" style="background:#c6f24e; color:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">RCA</a>
+          <a href="Metrics.dc.html" style="background:#5b2fe0; color:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">Metrics</a>
+          <a href="Guesstimates.dc.html" style="background:#ff5a3c; color:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">Guesstimates</a>
+          <a href="Product-Improvement.dc.html" style="background:#f4f1ea; color:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">Product Improvement</a>
+          <a href="Product-Design.dc.html" style="background:#25D366; color:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">Product Design</a>
+          <a href="#resources" style="background:#c6f24e; color:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">Success Stories</a>
+          <a href="Market-Updates.dc.html" style="background:#5b2fe0; color:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">Market Updates</a>
+          <a href="Personal-Insights.dc.html" style="background:#ef5da8; color:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">Personal Insights</a>
+          <a href="Newsletters.dc.html" style="background:#1a1712; color:#f4f1ea; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #5b2fe0;">Newsletters</a>
+          <a href="SQL-Bootcamp.dc.html" style="background:#2ee6d6; color:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">SQL Bootcamp</a>
+          <a href="RCA.dc.html" aria-hidden="true" style="background:#c6f24e; color:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">RCA</a>
+          <a href="Metrics.dc.html" aria-hidden="true" style="background:#5b2fe0; color:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">Metrics</a>
+          <a href="Guesstimates.dc.html" aria-hidden="true" style="background:#ff5a3c; color:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">Guesstimates</a>
+          <a href="Product-Improvement.dc.html" aria-hidden="true" style="background:#f4f1ea; color:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">Product Improvement</a>
+          <a href="Product-Design.dc.html" aria-hidden="true" style="background:#25D366; color:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">Product Design</a>
+          <a href="#resources" aria-hidden="true" style="background:#c6f24e; color:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">Success Stories</a>
+          <a href="Market-Updates.dc.html" aria-hidden="true" style="background:#5b2fe0; color:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">Market Updates</a>
+          <a href="Personal-Insights.dc.html" aria-hidden="true" style="background:#ef5da8; color:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">Personal Insights</a>
+          <a href="Newsletters.dc.html" aria-hidden="true" style="background:#1a1712; color:#f4f1ea; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #5b2fe0;">Newsletters</a>
+          <a href="SQL-Bootcamp.dc.html" aria-hidden="true" style="background:#2ee6d6; color:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:9px 16px; font-size:13px; font-weight:600; white-space:nowrap; box-shadow: 3px 3px 0 #1a1712;">SQL Bootcamp</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ METRICS STRIP ============ -->
+  <section style="max-width: 1200px; margin: 0 auto; padding: 56px 40px 0;">
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;">
+      <div style="background:#fff; border:1.5px solid #1a1712; border-radius:20px; padding:26px 24px; box-shadow: 5px 5px 0 #1a1712;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6f6a60; letter-spacing:0.12em; text-transform:uppercase;">Users impacted</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:46px; font-weight:800; letter-spacing:-0.02em; color:#5b2fe0; margin-top:4px;">{{ mUsers }}</div>
+      </div>
+      <div style="background:#fff; border:1.5px solid #1a1712; border-radius:20px; padding:26px 24px; box-shadow: 5px 5px 0 #1a1712;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6f6a60; letter-spacing:0.12em; text-transform:uppercase;">Activation lift</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:46px; font-weight:800; letter-spacing:-0.02em; color:#1a1712; margin-top:4px;">{{ mLift }}</div>
+      </div>
+      <div style="background:#fff; border:1.5px solid #1a1712; border-radius:20px; padding:26px 24px; box-shadow: 5px 5px 0 #1a1712;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6f6a60; letter-spacing:0.12em; text-transform:uppercase;">Free resources</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:46px; font-weight:800; letter-spacing:-0.02em; color:#ff5a3c; margin-top:4px;">{{ mGuides }}</div>
+      </div>
+      <div style="background:#fff; border:1.5px solid #1a1712; border-radius:20px; padding:26px 24px; box-shadow: 5px 5px 0 #1a1712;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6f6a60; letter-spacing:0.12em; text-transform:uppercase;">Learners helped</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:46px; font-weight:800; letter-spacing:-0.02em; color:#1a1712; margin-top:4px;">{{ mLearners }}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section id="about" style="max-width: 1200px; margin: 0 auto; padding: 92px 40px 0;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#5b2fe0;">01 — About</span>
+      <span style="flex:1; height:1.5px; background:#1a1712; opacity:0.15;"></span>
+    </div>
+    <div style="display:grid; grid-template-columns: 1.15fr 0.85fr; gap:44px; align-items:start;">
+      <div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-size:44px; line-height:1.02; margin:0 0 18px; font-weight:800; letter-spacing:-0.03em;">Hi, I'm Shubham — I like turning messy problems into shipped products.</h2>
+        <p style="font-size:16.5px; line-height:1.6; color:#4a463d; margin:0 0 16px;">I'm a Product Manager at Scholarin, where I work across discovery, roadmapping and launch — living in the space between what users struggle with and what the team can build next. I care about crisp problem framing, honest metrics, and shipping things that actually move the needle.</p>
+        <p style="font-size:16.5px; line-height:1.6; color:#4a463d; margin:0 0 24px;">Alongside the day job, I document everything I learn. This site doubles as a free resource hub for students and early-career folks trying to break into product — the RCAs, guesstimates and frameworks I wish I'd had on day one.</p>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6f6a60; text-transform:uppercase; letter-spacing:0.12em; margin-bottom:12px;">Find me online</div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="https://www.linkedin.com/in/shubhamnayakximb/" target="_blank" style="display:inline-flex; align-items:center; gap:9px; background:#0a66c2; color:#fff; border:1.5px solid #1a1712; border-radius:12px; padding:12px 18px; font-weight:700; font-size:14.5px; box-shadow:3px 3px 0 #1a1712;" style-hover="transform: translate(-2px,-2px); box-shadow:5px 5px 0 #1a1712;"><span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; background:#ffffff2e; padding:2px 6px; border-radius:5px;">in</span> LinkedIn</a>
+          <a href="https://instagram.com/scarylens" target="_blank" style="display:inline-flex; align-items:center; gap:9px; background:#ff5a3c; color:#fff; border:1.5px solid #1a1712; border-radius:12px; padding:12px 18px; font-weight:700; font-size:14.5px; box-shadow:3px 3px 0 #1a1712;" style-hover="transform: translate(-2px,-2px); box-shadow:5px 5px 0 #1a1712;"><span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:700; background:#ffffff2e; padding:2px 6px; border-radius:5px;">IG</span> @scarylens</a>
+        </div>
+      </div>
+      <div style="border:1.5px solid #1a1712; border-radius:20px; background:#fff; box-shadow:6px 6px 0 #1a1712; overflow:hidden;">
+        <div style="background:#5b2fe0; color:#fff; padding:15px 22px; border-bottom:1.5px solid #1a1712; font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; font-weight:600;">Quick facts</div>
+        <div style="padding:4px 22px 10px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; padding:13px 0; border-bottom:1.5px solid #1a171218;"><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6f6a60; text-transform:uppercase; letter-spacing:0.1em;">Currently</span><span style="font-weight:700; font-size:14.5px; text-align:right;">PM @ Scholarin</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; padding:13px 0; border-bottom:1.5px solid #1a171218;"><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6f6a60; text-transform:uppercase; letter-spacing:0.1em;">Education</span><span style="font-weight:700; font-size:14.5px; text-align:right;">MBA · XIMB</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; padding:13px 0; border-bottom:1.5px solid #1a171218;"><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6f6a60; text-transform:uppercase; letter-spacing:0.1em;">Focus</span><span style="font-weight:700; font-size:14.5px; text-align:right;">Product · Growth · Strategy</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; padding:13px 0; border-bottom:1.5px solid #1a171218;"><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6f6a60; text-transform:uppercase; letter-spacing:0.1em;">Domains</span><span style="font-weight:700; font-size:14.5px; text-align:right;">EdTech · Marketplaces</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; padding:13px 0; border-bottom:1.5px solid #1a171218;"><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6f6a60; text-transform:uppercase; letter-spacing:0.1em;">Based in</span><span style="font-weight:700; font-size:14.5px; text-align:right;">Bhubaneswar, IN</span></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:16px; padding:13px 0;"><span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6f6a60; text-transform:uppercase; letter-spacing:0.1em;">Mentoring</span><span style="font-weight:700; font-size:14.5px; text-align:right;">Future PMs</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WORK / CASE STUDIES ============ -->
+  <section id="work" style="max-width: 1200px; margin: 0 auto; padding: 96px 40px 0;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#5b2fe0;">02 — Selected Work</span>
+      <span style="flex:1; height:1.5px; background:#1a1712; opacity:0.15;"></span>
+    </div>
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-size:52px; line-height:0.98; margin:0 0 40px; font-weight:800; letter-spacing:-0.03em; max-width:760px;">Case studies from real launches, not hypotheticals.</h2>
+    <div style="display:flex; flex-direction:column; gap:22px;">
+      <sc-for list="{{ cases }}" as="c" hint-placeholder-count="3">
+        <div style="display:grid; grid-template-columns: 92px 1fr auto; gap:28px; align-items:center; background:#fff; border:1.5px solid #1a1712; border-radius:22px; padding:28px 32px; box-shadow: 6px 6px 0 #1a1712;">
+          <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:38px; font-weight:800; color:{{ c.accent }}; letter-spacing:-0.02em;">{{ c.num }}</div>
+          <div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px;">
+              <sc-for list="{{ c.tags }}" as="t" hint-placeholder-count="2">
+                <span style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; background:#f4f1ea; border:1.5px solid #1a1712; border-radius:999px; padding:4px 11px;">{{ t }}</span>
+              </sc-for>
+            </div>
+            <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:26px; font-weight:700; letter-spacing:-0.015em;">{{ c.title }}</div>
+            <div style="font-size:15px; color:#4a463d; margin-top:6px; max-width:620px; line-height:1.5;">{{ c.desc }}</div>
+          </div>
+          <div style="text-align:right; white-space:nowrap;">
+            <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:34px; font-weight:800; color:#1a1712; letter-spacing:-0.02em;">{{ c.metric }}</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6f6a60; text-transform:uppercase; letter-spacing:0.08em;">{{ c.metricLabel }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <!-- ============ RESOURCES / STUDY LIBRARY ============ -->
+  <section id="resources" style="background:#1a1712; margin-top:100px; padding: 84px 0;">
+    <div style="max-width:1200px; margin:0 auto; padding:0 40px;">
+      <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#c6f24e;">03 — Free Study Library</span>
+        <span style="flex:1; height:1.5px; background:#f4f1ea; opacity:0.2;"></span>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px; margin-bottom:42px;">
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-size:52px; line-height:0.98; margin:0; font-weight:800; letter-spacing:-0.03em; color:#f4f1ea; max-width:640px;">Everything I know, open-sourced for future PMs.</h2>
+        <p style="color:#b8b3a8; font-size:16px; line-height:1.55; max-width:360px; margin:0;">A growing library of templates, worked examples and breakdowns. Free forever — start anywhere.</p>
+      </div>
+      <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:16px;">
+        <sc-for list="{{ topics }}" as="t" hint-placeholder-count="6">
+          <a href="{{ t.link }}" style="background:{{ t.bg }}; color:{{ t.fg }}; border:1.5px solid #1a1712; border-radius:20px; padding:26px 26px 22px; min-height:172px; display:flex; flex-direction:column; justify-content:space-between; box-shadow: 5px 5px 0 #000;" style-hover="transform: translate(-2px,-2px);">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:11px; opacity:0.7; letter-spacing:0.1em;">{{ t.count }}</div>
+              <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:27px; font-weight:800; letter-spacing:-0.02em; margin-top:8px; line-height:1.02;">{{ t.name }}</div>
+            </div>
+            <div style="font-size:13.5px; line-height:1.45; opacity:0.85;">{{ t.desc }}</div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DAILY MARKET UPDATES ============ -->
+  <section style="max-width: 1200px; margin: 0 auto; padding: 96px 40px 0;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#5b2fe0;">04 — Daily Market Updates</span>
+      <span style="flex:1; height:1.5px; background:#1a1712; opacity:0.15;"></span>
+    </div>
+    <div style="display:grid; grid-template-columns: 0.82fr 1.18fr; gap:24px; align-items:stretch;">
+      <div style="background:#1a1712; color:#fff; border:1.5px solid #1a1712; border-radius:24px; padding:38px 34px; box-shadow:8px 8px 0 #ff5a3c; display:flex; flex-direction:column;">
+        <div style="display:inline-flex; align-self:flex-start; align-items:center; gap:7px; background:#ffffff1f; border:1.5px solid #ffffff55; border-radius:999px; padding:5px 12px; margin-bottom:20px;"><span style="width:7px;height:7px;border-radius:50%;background:#c6f24e;display:inline-block;"></span><span style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; letter-spacing:0.08em;">NEW EVERY DAY</span></div>
+        <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-size:38px; line-height:1.0; font-weight:800; letter-spacing:-0.03em; margin:0 0 14px;">The world, in 30-second reads.</h2>
+        <p style="font-size:15.5px; line-height:1.6; opacity:0.92; margin:0 0 26px;">The biggest moves in tech and business, cracked open in 30 seconds flat — what happened, why it matters, what to watch. A fresh one every single day. Your daily edge, minus the doomscroll.</p>
+        <a href="Market-Updates.dc.html" style="margin-top:auto; display:inline-flex; align-self:flex-start; align-items:center; gap:9px; background:#c6f24e; color:#1a1712; border:1.5px solid #1a1712; border-radius:12px; padding:14px 22px; font-weight:800; font-size:15px; white-space:nowrap; box-shadow:4px 4px 0 #ff5a3c;" style-hover="transform: translate(-2px,-2px); box-shadow:6px 6px 0 #ff5a3c;">Read today's updates →</a>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <sc-for list="{{ mkUpdates }}" as="u" hint-placeholder-count="3">
+          <a href="Market-Updates.dc.html?slug={{ u.slug }}" style="color:#1a1712; display:flex; align-items:center; justify-content:space-between; gap:18px; background:#fff; border:1.5px solid #1a1712; border-radius:18px; padding:20px 24px; box-shadow:4px 4px 0 #1a1712;" style-hover="transform: translate(-2px,-2px); box-shadow:6px 6px 0 #1a1712;">
+            <div style="min-width:0;">
+              <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px; flex-wrap:wrap;">
+                <span style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; background:{{ u.accent }}; color:{{ u.fg }}; border:1.5px solid #1a1712; border-radius:8px; padding:4px 10px; white-space:nowrap;">{{ u.company }}</span>
+                <span style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#6f6a60; letter-spacing:0.06em;">{{ u.readTime }} · {{ u.date }}</span>
+              </div>
+              <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:21px; font-weight:700; letter-spacing:-0.015em; line-height:1.12;">{{ u.title }}</div>
+            </div>
+            <span style="font-size:22px; color:#5b2fe0; flex-shrink:0;">→</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GUIDES / PLAYBOOKS ============ -->
+  <section id="guides" style="max-width: 1200px; margin: 0 auto; padding: 96px 40px 0;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#5b2fe0;">05 — Playbooks for Beginners</span>
+      <span style="flex:1; height:1.5px; background:#1a1712; opacity:0.15;"></span>
+    </div>
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-size:52px; line-height:0.98; margin:0 0 40px; font-weight:800; letter-spacing:-0.03em; max-width:720px;">Step-by-step guides to break into product.</h2>
+    <div style="display:grid; grid-template-columns: repeat(2, 1fr); gap:16px;">
+      <sc-for list="{{ playbookList }}" as="g" hint-placeholder-count="4">
+        <a href="{{ g.link }}" style="display:flex; gap:20px; align-items:flex-start; background:{{ g.bg }}; color:{{ g.fg }}; border:1.5px solid #1a1712; border-radius:20px; padding:26px 28px; box-shadow: 5px 5px 0 #1a1712;" style-hover="transform: translate(-2px,-2px); box-shadow: 7px 7px 0 #1a1712;">
+          <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:22px; font-weight:800; background:{{ g.badgeBg }}; color:{{ g.badgeFg }}; border:1.5px solid #1a1712; border-radius:12px; width:46px; height:46px; display:flex; align-items:center; justify-content:center; flex-shrink:0;">{{ g.num }}</div>
+          <div>
+            <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:22px; font-weight:700; letter-spacing:-0.015em; color:{{ g.fg }};">{{ g.title }}</div>
+            <div style="font-size:15px; color:{{ g.sub }}; margin-top:6px; line-height:1.5;">{{ g.desc }}</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:{{ g.meta }}; margin-top:12px; letter-spacing:0.08em;">{{ g.meta_ }}</div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+    <a href="Personal-Insights.dc.html" style="margin-top:16px; display:flex; align-items:center; justify-content:space-between; gap:20px; background:#ef5da8; color:#1a1712; border:1.5px solid #1a1712; border-radius:20px; padding:26px 28px; box-shadow: 5px 5px 0 #1a1712;" style-hover="transform: translate(-2px,-2px); box-shadow: 7px 7px 0 #1a1712;">
+      <div>
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.12em; text-transform:uppercase; opacity:0.7;">The full library</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:26px; font-weight:800; letter-spacing:-0.02em; margin-top:6px;">Every personal insight I've written</div>
+        <div style="font-size:15px; line-height:1.5; margin-top:6px; max-width:520px;">The lessons, the mistakes and the mental models — the ones above are just a taste. Go read the rest.</div>
+      </div>
+      <span style="font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:700; white-space:nowrap; background:#1a1712; color:#f4f1ea; border-radius:999px; padding:12px 20px;">Open the library →</span>
+    </a>
+  </section>
+
+  <!-- ============ NEWSLETTER / BLOG ============ -->
+  <section style="max-width: 1200px; margin: 0 auto; padding: 96px 40px 0;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#5b2fe0;">06 — Newsletter &amp; Writing</span>
+      <span style="flex:1; height:1.5px; background:#1a1712; opacity:0.15;"></span>
+    </div>
+    <div style="color:#1a1712; display:grid; grid-template-columns:0.8fr 1.2fr; background:#fff; border:1.5px solid #1a1712; border-radius:24px; overflow:hidden; box-shadow:8px 8px 0 #1a1712; margin-bottom:24px;">
+      <div style="position:relative; min-height:250px; border-right:1.5px solid #1a1712; background:#e9e7e2;">
+        <img src="images/nl-launch-group.jpg" alt="My first product launch" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block;">
+        <span style="position:absolute; top:16px; left:16px; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; background:#c6f24e; color:#1a1712; border:1.5px solid #1a1712; border-radius:8px; padding:5px 11px; white-space:nowrap;">ISSUE 01 · FEATURED</span>
+      </div>
+      <div style="padding:34px 38px; display:flex; flex-direction:column; justify-content:center;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6f6a60; letter-spacing:0.1em; margin-bottom:12px;">THE PM NOTEBOOK · 5 MIN READ · STORY</div>
+        <h3 style="font-family:'Bricolage Grotesque',sans-serif; font-size:36px; line-height:1.0; font-weight:800; letter-spacing:-0.03em; margin:0 0 12px;">My first product launch</h3>
+        <p style="font-size:16px; line-height:1.6; color:#4a463d; margin:0 0 20px; max-width:520px;">Broke at the end of the month, a campus food fest, and a stack of old newspapers — the scrappy launch that taught me more about product than any textbook ever did.</p>
+        <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+          <a href="Newsletters.dc.html?slug=first-product-launch" style="display:inline-flex; align-items:center; gap:9px; background:#c6f24e; color:#1a1712; border:1.5px solid #1a1712; border-radius:12px; padding:13px 22px; font-weight:800; font-size:15px; white-space:nowrap; box-shadow:4px 4px 0 #5b2fe0;" style-hover="transform: translate(-2px,-2px); box-shadow:6px 6px 0 #5b2fe0;">Read the full story →</a>
+        </div>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns: 1.1fr 0.9fr; gap:40px; align-items:stretch;">
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <a href="Newsletters.dc.html" style="color:#f4f1ea; display:flex; align-items:center; justify-content:space-between; gap:16px; background:#1a1712; border:1.5px solid #1a1712; border-radius:18px; padding:20px 26px; box-shadow:4px 4px 0 #c6f24e;" style-hover="transform: translate(-2px,-2px); box-shadow:6px 6px 0 #c6f24e;">
+          <div>
+            <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:21px; font-weight:800; letter-spacing:-0.015em;">Browse all issues</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#b8b3a8; margin-top:4px; letter-spacing:0.06em;">THE PM NOTEBOOK · FREE ARCHIVE</div>
+          </div>
+          <span style="font-size:22px; color:#c6f24e;">→</span>
+        </a>
+        <sc-for list="{{ posts }}" as="p" hint-placeholder-count="3">
+          <a href="{{ p.link }}" style="color:#1a1712; display:flex; justify-content:space-between; align-items:center; gap:20px; background:#fff; border:1.5px solid #1a1712; border-radius:18px; padding:22px 26px; box-shadow: 4px 4px 0 #1a1712;" style-hover="transform: translate(-2px,-2px); box-shadow:6px 6px 0 #1a1712;">
+            <div>
+              <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6f6a60; letter-spacing:0.08em;">{{ p.date }} · {{ p.read }}</div>
+              <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:22px; font-weight:700; letter-spacing:-0.015em; margin-top:4px;">{{ p.title }}</div>
+            </div>
+            <span style="font-size:22px; color:#5b2fe0;">→</span>
+          </a>
+        </sc-for>
+      </div>
+      <div style="background:#ff5a3c; color:#fff; border:1.5px solid #1a1712; border-radius:24px; padding:40px 36px; box-shadow: 8px 8px 0 #1a1712; display:flex; flex-direction:column; justify-content:center;">
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.14em; opacity:0.85;">THE PM NOTEBOOK</div>
+          <div style="display:inline-flex; align-items:center; gap:7px; background:#ffffff1f; border:1.5px solid #ffffff55; border-radius:999px; padding:4px 11px;"><span style="width:7px; height:7px; border-radius:50%; background:#c6f24e; display:inline-block;"></span><span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600;">{{ subCount }} subscribers</span></div>
+        </div>
+        <h3 style="font-family:'Bricolage Grotesque',sans-serif; font-size:34px; line-height:1.02; font-weight:800; letter-spacing:-0.02em; margin:14px 0 12px;">A weekly note on products, metrics &amp; getting hired.</h3>
+        <p style="font-size:15px; line-height:1.55; opacity:0.9; margin:0 0 24px;">Frameworks, teardowns and market updates — my LinkedIn newsletter. No fluff.</p>
+        <a href="https://www.linkedin.com/newsletters/the-pm-notebook-7271767289497051136/" target="_blank" style="display:inline-flex; align-items:center; justify-content:center; gap:10px; background:#c6f24e; color:#1a1712; border:1.5px solid #1a1712; border-radius:12px; padding:15px 22px; font-weight:800; font-size:15.5px; font-family:'Manrope',sans-serif; box-shadow:3px 3px 0 #1a1712;" style-hover="transform: translate(-2px,-2px); box-shadow:5px 5px 0 #1a1712;"><span style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; background:#0a66c2; color:#fff; padding:4px 8px; border-radius:6px;">in</span> Subscribe on LinkedIn →</a>
+        <div style="font-size:12.5px; opacity:0.72; margin-top:12px; line-height:1.45;">Opens the newsletter on LinkedIn — one click to subscribe.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section style="max-width: 1200px; margin: 0 auto; padding: 96px 40px 0;">
+    <div style="display:flex; align-items:center; gap:12px; margin-bottom:26px;">
+      <span style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#5b2fe0;">07 — Recommendations</span>
+      <span style="flex:1; height:1.5px; background:#1a1712; opacity:0.15;"></span>
+    </div>
+    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:16px;">
+      <sc-for list="{{ quotes }}" as="q" hint-placeholder-count="3">
+        <div style="background:{{ q.bg }}; color:{{ q.fg }}; border:1.5px solid #1a1712; border-radius:22px; padding:30px 28px; box-shadow: 6px 6px 0 #1a1712; display:flex; flex-direction:column; gap:20px;">
+          <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:54px; line-height:0.4; height:20px;">"</div>
+          <p style="font-size:16px; line-height:1.55; margin:0; font-weight:500;">{{ q.text }}</p>
+          <div style="display:flex; align-items:center; gap:12px; margin-top:auto;">
+            <div onClick="{{ q.onZoom }}" title="Click to zoom" style="width:44px; height:44px; border-radius:50%; border:1.5px solid #1a1712; background:{{ q.avatar }}; overflow:hidden; flex-shrink:0; cursor:zoom-in;">{{ q.avatarEl }}</div>
+            <div><a href="{{ q.linkedin }}" target="_blank" style="font-weight:700; font-size:14px; text-decoration:none;" style-hover="text-decoration:underline;">{{ q.name }}</a><div style="font-size:12.5px; opacity:0.75;">{{ q.role }}</div></div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="margin-top:24px;">
+      <a href="https://www.linkedin.com/in/shubhamnayakximb/details/recommendations/" target="_blank" style="display:inline-flex; align-items:center; gap:10px; background:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:12px 22px; font-weight:700; font-size:14.5px; box-shadow:3px 3px 0 #1a1712;"><span style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; background:#0a66c2; color:#fff; padding:4px 8px; border-radius:6px;">in</span> Read all recommendations on LinkedIn →</a>
+    </div>
+  </section>
+
+  <sc-if value="{{ zoomImg }}">
+    <div onClick="{{ closeZoom }}" style="position:fixed; inset:0; z-index:200; background:rgba(26,23,18,0.92); display:flex; align-items:center; justify-content:center; padding:40px; cursor:zoom-out;">
+      {{ zoomEl }}
+      <div style="position:absolute; top:24px; right:28px; font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600; color:#f4f1ea;">✕ close</div>
+    </div>
+  </sc-if>
+
+  <!-- ============ CONTACT / HIRE + WHATSAPP ============ -->
+  <section id="contact" style="max-width: 1200px; margin: 0 auto; padding: 96px 40px 100px;">
+    <div style="border-radius:28px; overflow:hidden; border:1.5px solid #1a1712; box-shadow: 10px 12px 0 #1a1712; background:#f4f1ea;">
+      <div style="display:grid; grid-template-columns: 1fr 1.05fr;">
+        <!-- left: pitch + emails -->
+        <div style="padding:52px 46px; background:#1a1712; color:#f4f1ea; border-right:1.5px solid #1a1712;">
+          <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; margin-bottom:18px;">08 — Let's talk</div>
+          <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-size:46px; line-height:0.98; margin:0 0 18px; font-weight:800; letter-spacing:-0.03em;">Hiring, collaborating, or stuck on a PM problem?</h2>
+          <p style="font-size:16px; line-height:1.6; color:#d8d3c7; margin:0 0 30px;">I love talking product — whether you're a student stuck on a concept, a founder wrestling with a problem, or a team building something worth building. Ping me on WhatsApp or email and let's get into it.</p>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <button onClick="{{ onMailWork }}" style="display:flex; align-items:center; gap:12px; color:#1a1712; background:#fff; border:1.5px solid #1a1712; border-radius:14px; padding:14px 18px; box-shadow:3px 3px 0 #1a1712; cursor:pointer; width:100%; text-align:left; font-family:'Manrope',sans-serif;" style-hover="transform: translate(-2px,-2px); box-shadow:5px 5px 0 #1a1712;">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:11px; background:#5b2fe0; color:#fff; padding:4px 8px; border-radius:6px;">WORK</span>
+              <span style="font-weight:600; font-size:14.5px;">Shubham.nayak@scholarin.fyi</span>
+              <span style="margin-left:auto; font-size:15px; color:#5b2fe0;">✎</span>
+            </button>
+            <button onClick="{{ onMailPersonal }}" style="display:flex; align-items:center; gap:12px; color:#1a1712; background:#fff; border:1.5px solid #1a1712; border-radius:14px; padding:14px 18px; box-shadow:3px 3px 0 #1a1712; cursor:pointer; width:100%; text-align:left; font-family:'Manrope',sans-serif;" style-hover="transform: translate(-2px,-2px); box-shadow:5px 5px 0 #1a1712;">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:11px; background:#ff5a3c; color:#fff; padding:4px 8px; border-radius:6px;">PERSONAL</span>
+              <span style="font-weight:600; font-size:14.5px;">Shubhamnayakximb@gmail.com</span>
+              <span style="margin-left:auto; font-size:15px; color:#ff5a3c;">✎</span>
+            </button>
+            <div style="display:flex; align-items:center; gap:12px; background:#fff; color:#1a1712; border:1.5px solid #1a1712; border-radius:14px; padding:14px 18px;">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:11px; background:#25D366; color:#fff; padding:4px 8px; border-radius:6px;">WHATSAPP</span>
+              <span style="font-weight:600; font-size:14.5px;">Reach me via the form →</span>
+            </div>
+          </div>
+        </div>
+        <!-- right: WhatsApp request form -->
+        <div style="padding:52px 46px;">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+            <span style="width:34px;height:34px;border-radius:9px;background:#25D366;border:1.5px solid #1a1712;display:flex;align-items:center;justify-content:center;"><svg viewBox="0 0 24 24" width="20" height="20" fill="#fff" aria-hidden="true"><path d="M17.5 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.25-.46-2.39-1.47-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.44-.53.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.06 2.87 1.21 3.07.15.2 2.1 3.2 5.08 4.48.71.3 1.26.48 1.69.62.71.22 1.35.19 1.86.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.42-.07-.12-.27-.2-.57-.34z M20.52 3.45C18.24 1.24 15.23 0 12.05 0 5.5 0 .17 5.34.17 11.9c0 2.1.55 4.14 1.6 5.95L.06 24l6.3-1.65a11.9 11.9 0 0 0 5.68 1.45h.01c6.55 0 11.88-5.34 11.88-11.9 0-3.18-1.24-6.17-3.49-8.42z M12.05 21.79h-.01c-1.78 0-3.53-.48-5.06-1.38l-.36-.22-3.75.98 1-3.65-.24-.38a9.86 9.86 0 0 1-1.51-5.25c0-5.45 4.44-9.88 9.9-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.45-4.44 9.89-9.89 9.89z"/></svg></span>
+            <h3 style="font-family:'Bricolage Grotesque',sans-serif; font-size:26px; font-weight:800; margin:0; letter-spacing:-0.02em;">Let's talk — I actually reply.</h3>
+          </div>
+          <p style="font-size:14px; color:#6f6a60; margin:0 0 24px; line-height:1.5;">Add a quick intro and hit send — it opens a WhatsApp chat with your details pre-filled, so I've got context before I reply. Broke into product and want to share your success story? Reach out here too — I'd genuinely love to feature you.</p>
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+              <div>
+                <label style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#6f6a60;">Your name *</label>
+                <input value="{{ fName }}" onInput="{{ onField.name }}" placeholder="Jane Doe" style="width:100%; margin-top:6px; border:1.5px solid #1a1712; border-radius:12px; padding:12px 14px; font-family:'Manrope',sans-serif; font-size:15px; background:#fff;">
+              </div>
+              <div>
+                <label style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#6f6a60;">Your role / company</label>
+                <input value="{{ fRole }}" onInput="{{ onField.role }}" placeholder="Recruiter @ Acme" style="width:100%; margin-top:6px; border:1.5px solid #1a1712; border-radius:12px; padding:12px 14px; font-family:'Manrope',sans-serif; font-size:15px; background:#fff;">
+              </div>
+            </div>
+            <div>
+              <label style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#6f6a60;">Your email</label>
+              <input value="{{ fEmail }}" onInput="{{ onField.email }}" placeholder="you@email.com" style="width:100%; margin-top:6px; border:1.5px solid #1a1712; border-radius:12px; padding:12px 14px; font-family:'Manrope',sans-serif; font-size:15px; background:#fff;">
+            </div>
+            <div>
+              <label style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#6f6a60;">What's this about?</label>
+              <select value="{{ fTopic }}" onChange="{{ onField.topic }}" style="width:100%; margin-top:6px; border:1.5px solid #1a1712; border-radius:12px; padding:12px 14px; font-family:'Manrope',sans-serif; font-size:15px; background:#fff;">
+                <option>A product role / hiring</option>
+                <option>Mentorship &amp; PM prep help</option>
+                <option>Collaboration / speaking</option>
+                <option>Sharing my success story</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#6f6a60;">Message</label>
+              <textarea value="{{ fMsg }}" onInput="{{ onField.msg }}" placeholder="A quick line about what you need…" rows="3" style="width:100%; margin-top:6px; border:1.5px solid #1a1712; border-radius:12px; padding:12px 14px; font-family:'Manrope',sans-serif; font-size:15px; background:#fff; resize:vertical;"></textarea>
+            </div>
+            <button onClick="{{ onWhatsApp }}" style="background:#25D366; color:#fff; border:1.5px solid #1a1712; border-radius:14px; padding:16px; font-weight:800; font-size:16px; cursor:pointer; font-family:'Manrope',sans-serif; box-shadow:4px 4px 0 #1a1712; display:flex; align-items:center; justify-content:center; gap:10px;" style-hover="transform: translate(-2px,-2px); box-shadow:6px 6px 0 #1a1712;">Send on WhatsApp →</button>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:{{ errColor }}; min-height:14px;">{{ formHint }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <sc-if value="{{ showSuccess }}">
+    <div onClick="{{ closeSuccess }}" style="position:fixed; inset:0; z-index:120; background:#1a1712d9; display:flex; align-items:center; justify-content:center; padding:24px; cursor:pointer;">
+      <div style="max-width:480px; width:100%; background:#f4f1ea; border:1.5px solid #1a1712; border-radius:24px; padding:40px 38px; box-shadow:12px 12px 0 #c6f24e; cursor:default; text-align:center;">
+        <div style="display:inline-flex; align-items:center; gap:8px; background:#c6f24e; border:1.5px solid #1a1712; border-radius:999px; padding:6px 14px; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; box-shadow:3px 3px 0 #1a1712;">★ SUCCESS STORIES</div>
+        <h3 style="font-family:'Bricolage Grotesque',sans-serif; font-size:38px; line-height:1.0; font-weight:800; letter-spacing:-0.03em; margin:22px 0 12px;">Coming soon.</h3>
+        <p style="font-size:16px; line-height:1.6; color:#4a463d; margin:0 0 24px;">Real journeys from students and beginners who broke into product — the pivots, the rejections, the first offer that changed everything. I'm collecting them right now. Got a story worth telling? I want to feature you.</p>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+          <a href="#contact" onClick="{{ closeSuccess }}" style="background:#5b2fe0; color:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:12px 22px; font-weight:700; font-size:14px; box-shadow:3px 3px 0 #1a1712;">Share your story →</a>
+          <button onClick="{{ closeSuccess }}" style="background:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:12px 22px; font-weight:700; font-size:14px; cursor:pointer; font-family:'Manrope',sans-serif; box-shadow:3px 3px 0 #1a1712;">Close</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ mailOpen }}">
+    <div onClick="{{ closeMail }}" style="position:fixed; inset:0; z-index:130; background:#1a1712d9; display:flex; align-items:center; justify-content:center; padding:24px;">
+      <div onClick="{{ stopMail }}" style="max-width:520px; width:100%; background:#f4f1ea; border:1.5px solid #1a1712; border-radius:24px; padding:32px 32px 28px; box-shadow:12px 12px 0 #5b2fe0; max-height:92vh; overflow:auto;">
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:14px; margin-bottom:6px;">
+          <div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#5b2fe0; margin-bottom:8px;">Email me — right here</div>
+            <h3 style="font-family:'Bricolage Grotesque',sans-serif; font-size:30px; font-weight:800; letter-spacing:-0.02em; margin:0; line-height:1.02;">Send me a message</h3>
+          </div>
+          <button onClick="{{ closeMail }}" style="flex:none; width:34px; height:34px; border-radius:10px; border:1.5px solid #1a1712; background:#fff; cursor:pointer; font-size:16px; line-height:1; box-shadow:2px 2px 0 #1a1712;">✕</button>
+        </div>
+        <div style="display:inline-flex; align-items:center; gap:8px; background:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:5px 12px; margin:8px 0 20px;">
+          <span style="font-family:'JetBrains Mono',monospace; font-size:10px; background:{{ mailBadgeBg }}; color:#fff; padding:3px 7px; border-radius:5px;">{{ mailLabel }}</span>
+          <span style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600;">{{ mailAddr }}</span>
+        </div>
+
+        <sc-if value="{{ mailFormView }}">
+          <div style="display:flex; flex-direction:column; gap:14px;">
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px;">
+              <div>
+                <label style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#6f6a60;">Your name *</label>
+                <input value="{{ emName }}" onInput="{{ onMailField.name }}" placeholder="Jane Doe" style="width:100%; margin-top:6px; border:1.5px solid #1a1712; border-radius:12px; padding:12px 14px; font-family:'Manrope',sans-serif; font-size:15px; background:#fff;">
+              </div>
+              <div>
+                <label style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#6f6a60;">Your email *</label>
+                <input value="{{ emEmail }}" onInput="{{ onMailField.email }}" placeholder="you@email.com" style="width:100%; margin-top:6px; border:1.5px solid #1a1712; border-radius:12px; padding:12px 14px; font-family:'Manrope',sans-serif; font-size:15px; background:#fff;">
+              </div>
+            </div>
+            <div>
+              <label style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#6f6a60;">Subject</label>
+              <input value="{{ emSubj }}" onInput="{{ onMailField.subj }}" placeholder="What's this about?" style="width:100%; margin-top:6px; border:1.5px solid #1a1712; border-radius:12px; padding:12px 14px; font-family:'Manrope',sans-serif; font-size:15px; background:#fff;">
+            </div>
+            <div>
+              <label style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:#6f6a60;">Message *</label>
+              <textarea value="{{ emMsg }}" onInput="{{ onMailField.msg }}" placeholder="Type your message — it lands straight in my inbox." rows="4" style="width:100%; margin-top:6px; border:1.5px solid #1a1712; border-radius:12px; padding:12px 14px; font-family:'Manrope',sans-serif; font-size:15px; background:#fff; resize:vertical;"></textarea>
+            </div>
+            <button onClick="{{ onSendMail }}" style="background:#5b2fe0; color:#fff; border:1.5px solid #1a1712; border-radius:14px; padding:16px; font-weight:800; font-size:16px; cursor:pointer; font-family:'Manrope',sans-serif; box-shadow:4px 4px 0 #1a1712; display:flex; align-items:center; justify-content:center; gap:10px;" style-hover="transform: translate(-2px,-2px); box-shadow:6px 6px 0 #1a1712;">{{ sendLabel }}</button>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:{{ mailErrColor }}; min-height:14px; line-height:1.4;">{{ mailHint }}</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ mailSentView }}">
+          <div style="text-align:center; padding:14px 0 8px;">
+            <div style="width:64px; height:64px; margin:0 auto 18px; border-radius:16px; background:#c6f24e; border:1.5px solid #1a1712; display:flex; align-items:center; justify-content:center; font-size:32px; box-shadow:4px 4px 0 #1a1712;">✓</div>
+            <h3 style="font-family:'Bricolage Grotesque',sans-serif; font-size:30px; font-weight:800; letter-spacing:-0.02em; margin:0 0 10px; line-height:1.02;">Message sent!</h3>
+            <p style="font-size:15.5px; line-height:1.6; color:#4a463d; margin:0 0 22px;">It's in my inbox — I'll reply to your email soon. Thanks for reaching out. 🙌</p>
+            <button onClick="{{ closeMail }}" style="background:#1a1712; color:#f4f1ea; border:1.5px solid #1a1712; border-radius:999px; padding:12px 26px; font-weight:700; font-size:14px; cursor:pointer; font-family:'Manrope',sans-serif; box-shadow:3px 3px 0 #c6f24e;">Done</button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- ============ FOOTER ============ -->
+  <footer style="background:#1a1712; color:#b8b3a8; padding:44px 0;">
+    <div style="max-width:1200px; margin:0 auto; padding:0 40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+      <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:22px; color:#f4f1ea;">Shubham Nayak<span style="color:#c6f24e;">.</span></div>
+      <div style="font-size:13px;">Portfolio · Resource hub · Guides for future PMs</div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px;">© 2026 · Built with care</div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    mUsers: "0", mLift: "0%", mGuides: "0", mLearners: "0",
+    email: "", subLabel: "Subscribe",
+    fName: "", fRole: "", fEmail: "", fTopic: "A product role / hiring", fMsg: "",
+    formHint: "", errColor: "#6f6a60", zoomImg: null, showSuccess: false,
+    mailOpen: false, mailAddr: "", mailLabel: "", mailBadgeBg: "#5b2fe0",
+    emName: "", emEmail: "", emSubj: "", emMsg: "", emSending: false, emSent: false,
+    mailHint: "", mailErrColor: "#6f6a60"
+  };
+
+  componentDidMount() {
+    this.animate("mUsers", 1200000, v => this.fmt(v) + "+", 1200);
+    this.animate("mLift", 34, v => "+" + Math.round(v) + "%", 1200);
+    this.animate("mGuides", 100, v => Math.round(v) + "+", 1200);
+    this.animate("mLearners", 3000, v => this.fmt(v) + "+", 1200);
+    this.scrollToHash();
+    window.addEventListener("hashchange", () => this.scrollToHash());
+    this.waitData(20);
+    this.initLibRail();
+  }
+
+  initLibRail = (tries) => {
+    const rail = document.getElementById("sn-lib-rail");
+    const track = document.getElementById("sn-lib-track");
+    if (!rail || !track) { if ((tries || 0) < 40) setTimeout(() => this.initLibRail((tries || 0) + 1), 100); return; }
+    if (rail.__snInit) return; rail.__snInit = true;
+    let paused = false, rt = null, down = false, sx = 0, sl = 0, moved = false;
+    const half = () => track.scrollWidth / 2;
+    const pauseNow = () => { paused = true; if (rt) clearTimeout(rt); };
+    const resumeLater = () => { if (rt) clearTimeout(rt); rt = setTimeout(() => { paused = false; }, 500); };
+    const tick = () => {
+      if (!paused && !down) { rail.scrollLeft += 0.5; if (rail.scrollLeft >= half()) rail.scrollLeft -= half(); }
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    rail.addEventListener("pointerenter", pauseNow);
+    rail.addEventListener("pointerleave", () => { if (!down) resumeLater(); });
+    rail.addEventListener("wheel", () => { pauseNow(); resumeLater(); }, { passive: true });
+    rail.addEventListener("touchstart", pauseNow, { passive: true });
+    rail.addEventListener("touchend", resumeLater);
+    rail.addEventListener("pointerdown", (e) => { down = true; moved = false; sx = e.clientX; sl = rail.scrollLeft; rail.style.cursor = "grabbing"; pauseNow(); });
+    window.addEventListener("pointermove", (e) => { if (!down) return; const dx = e.clientX - sx; if (Math.abs(dx) > 4) moved = true; rail.scrollLeft = sl - dx; });
+    window.addEventListener("pointerup", () => { if (down) { down = false; rail.style.cursor = "grab"; resumeLater(); } });
+    rail.addEventListener("click", (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; } }, true);
+    rail.addEventListener("scroll", () => { if (rail.scrollLeft <= 0) rail.scrollLeft += half(); });
+    rail.scrollLeft = 1;
+  };
+
+  waitData = (tries) => {
+    if (window.RCA_CASES && window.METRICS_CASES && window.GUESS_CASES && window.IMPROVE_CASES && window.DESIGN_CASES && window.PERSONAL_INSIGHTS && window.MARKET_UPDATES) { this.forceUpdate(); return; }
+    if (tries > 0) setTimeout(() => this.waitData(tries - 1), 80);
+  };
+
+  topicCount = (data, unit, fallback) => data ? (data.length + " " + unit) : fallback;
+
+  scrollToHash = () => {
+    const id = (location.hash || "").slice(1);
+    if (!id) return;
+    const go = (tries) => {
+      const el = document.getElementById(id);
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.pageYOffset - 72;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      } else if (tries > 0) {
+        setTimeout(() => go(tries - 1), 120);
+      }
+    };
+    setTimeout(() => go(10), 200);
+  };
+
+  fmt(n) {
+    if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, "") + "M";
+    if (n >= 1000) return Math.round(n / 1000) + "k";
+    return Math.round(n).toString();
+  }
+
+  animate(key, target, format, dur) {
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min(1, (now - start) / dur);
+      const eased = 1 - Math.pow(1 - t, 3);
+      this.setState({ [key]: format(target * eased) });
+      if (t < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  onWhatsApp = () => {
+    const { fName, fRole, fEmail, fTopic, fMsg } = this.state;
+    if (!fName.trim()) {
+      this.setState({ formHint: "Please add your name first.", errColor: "#ff5a3c" });
+      return;
+    }
+    const lines = [
+      "Hi Shubham! I found your portfolio and wanted to reach out.",
+      "",
+      "Name: " + fName,
+      fRole ? "Role/Company: " + fRole : "",
+      fEmail ? "Email: " + fEmail : "",
+      "About: " + fTopic,
+      fMsg ? "Message: " + fMsg : ""
+    ].filter(Boolean);
+    const text = encodeURIComponent(lines.join("\n"));
+    const url = "https://wa.me/918260678815?text=" + text;
+    window.open(url, "_blank");
+    this.setState({ formHint: "Opening WhatsApp… if nothing happens, allow pop-ups.", errColor: "#2f9e44" });
+  };
+
+  openMail = (addr, label, badge) => this.setState({ mailOpen: true, mailAddr: addr, mailLabel: label, mailBadgeBg: badge, emSubj: "", emMsg: "", emSent: false, emSending: false, mailHint: "", mailErrColor: "#6f6a60" });
+  closeMail = () => this.setState({ mailOpen: false });
+  sendMail = async () => {
+    const { emName, emEmail, emMsg, mailAddr, mailLabel, emSubj } = this.state;
+    if (!emName.trim()) { this.setState({ mailHint: "Please add your name.", mailErrColor: "#ff5a3c" }); return; }
+    if (!/.+@.+\..+/.test(emEmail)) { this.setState({ mailHint: "Please add a valid email so I can reply.", mailErrColor: "#ff5a3c" }); return; }
+    if (!emMsg.trim()) { this.setState({ mailHint: "Your message is empty.", mailErrColor: "#ff5a3c" }); return; }
+    this.setState({ emSending: true, mailHint: "Sending…", mailErrColor: "#6f6a60" });
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          access_key: "a9321a75-964a-461d-b4ae-23aa57557828",
+          name: emName,
+          email: emEmail,
+          replyto: emEmail,
+          from_name: emName + " (Portfolio)",
+          subject: (emSubj.trim() || "Portfolio message") + " — via " + mailLabel + " (" + mailAddr + ")",
+          message: emMsg + "\n\n———\nSent from your portfolio contact popup.\nIntended inbox: " + mailAddr + "\nReply to: " + emEmail
+        })
+      });
+      const data = await res.json();
+      if (data && data.success) {
+        this.setState({ emSending: false, emSent: true, mailHint: "" });
+      } else {
+        this.setState({ emSending: false, mailHint: "Couldn't send — please try again, or reach me on WhatsApp.", mailErrColor: "#ff5a3c" });
+      }
+    } catch (e) {
+      this.setState({ emSending: false, mailHint: "Network error — check your connection and retry.", mailErrColor: "#ff5a3c" });
+    }
+  };
+  onEmail = (e) => this.setState({ email: e.target.value });
+  openZoom = (src) => this.setState({ zoomImg: src });
+  closeZoom = () => this.setState({ zoomImg: null });
+  openSuccess = () => this.setState({ showSuccess: true });
+  closeSuccess = () => this.setState({ showSuccess: false });
+  onSubscribe = () => {
+    const v = this.state.email.trim();
+    if (!/.+@.+\..+/.test(v)) { this.setState({ subLabel: "Enter a valid email" }); return; }
+    this.setState({ subLabel: "Subscribed ✓", email: "" });
+    setTimeout(() => this.setState({ subLabel: "Subscribe" }), 2500);
+  };
+
+  renderVals() {
+    const onField = {
+      name: e => this.setState({ fName: e.target.value }),
+      role: e => this.setState({ fRole: e.target.value }),
+      email: e => this.setState({ fEmail: e.target.value }),
+      topic: e => this.setState({ fTopic: e.target.value }),
+      msg: e => this.setState({ fMsg: e.target.value })
+    };
+    return {
+      mUsers: this.state.mUsers, mLift: this.state.mLift, mGuides: this.state.mGuides, mLearners: this.state.mLearners,
+      email: this.state.email, subLabel: this.state.subLabel, onEmail: this.onEmail, onSubscribe: this.onSubscribe, subCount: "598",
+      showSuccess: this.state.showSuccess, openSuccess: this.openSuccess, closeSuccess: this.closeSuccess,
+      mailOpen: this.state.mailOpen, closeMail: this.closeMail, stopMail: (e) => e.stopPropagation(),
+      onMailWork: () => this.openMail("Shubham.nayak@scholarin.fyi", "WORK", "#5b2fe0"),
+      onMailPersonal: () => this.openMail("Shubhamnayakximb@gmail.com", "PERSONAL", "#ff5a3c"),
+      mailAddr: this.state.mailAddr, mailLabel: this.state.mailLabel, mailBadgeBg: this.state.mailBadgeBg,
+      mailFormView: this.state.mailOpen && !this.state.emSent, mailSentView: this.state.emSent,
+      emName: this.state.emName, emEmail: this.state.emEmail, emSubj: this.state.emSubj, emMsg: this.state.emMsg,
+      onMailField: {
+        name: e => this.setState({ emName: e.target.value }),
+        email: e => this.setState({ emEmail: e.target.value }),
+        subj: e => this.setState({ emSubj: e.target.value }),
+        msg: e => this.setState({ emMsg: e.target.value })
+      },
+      onSendMail: this.sendMail, sendLabel: this.state.emSending ? "Sending…" : "Send email →",
+      mailHint: this.state.mailHint, mailErrColor: this.state.mailErrColor,
+      mkUpdates: (window.MARKET_UPDATES || []).slice(0, 3).map(u => ({ slug: u.slug, company: u.company, accent: u.accent, fg: u.fg, title: u.title, readTime: u.readTime, date: u.date })),
+      fName: this.state.fName, fRole: this.state.fRole, fEmail: this.state.fEmail, fTopic: this.state.fTopic, fMsg: this.state.fMsg,
+      onField, onWhatsApp: this.onWhatsApp, formHint: this.state.formHint, errColor: this.state.errColor,
+      zoomImg: this.state.zoomImg, closeZoom: this.closeZoom,
+      zoomEl: this.state.zoomImg ? React.createElement("img", { src: this.state.zoomImg, alt: "Recommender", style: { maxWidth: "min(90vw,540px)", maxHeight: "86vh", border: "2px solid #1a1712", borderRadius: "18px", boxShadow: "12px 12px 0 #5b2fe0", objectFit: "contain", background: "#fff" } }) : null,
+      cases: [
+        { num: "01", accent: "#5b2fe0", tags: ["Onboarding", "Activation"], title: "Rebuilt the first-run onboarding", desc: "Reframed activation around a single aha-moment, cut steps by 40% and instrumented every drop-off.", metric: "+34%", metricLabel: "Activation" },
+        { num: "02", accent: "#ff5a3c", tags: ["Retention", "Growth"], title: "Habit loop for weekly learners", desc: "Designed a nudge + streak system that turned one-time users into weekly returners.", metric: "+18%", metricLabel: "W4 Retention" },
+        { num: "03", accent: "#2f9e44", tags: ["Discovery", "0→1"], title: "Launched the mentor marketplace", desc: "Took a two-sided marketplace from problem framing to GA across three cohorts.", metric: "1.2M", metricLabel: "Users reached" }
+      ],
+      topics: [
+        { name: "RCA", count: this.topicCount(window.RCA_CASES, "case studies", "case studies"), desc: "Root-cause frameworks with real worked examples.", bg: "#c6f24e", fg: "#1a1712", link: "RCA.dc.html" },
+        { name: "Metrics", count: this.topicCount(window.METRICS_CASES, "case studies", "case studies"), desc: "North-star, funnels and guardrails, demystified.", bg: "#5b2fe0", fg: "#ffffff", link: "Metrics.dc.html" },
+        { name: "Guesstimates", count: this.topicCount(window.GUESS_CASES, "solved", "solved"), desc: "Structured market-sizing you can copy in interviews.", bg: "#ff5a3c", fg: "#ffffff", link: "Guesstimates.dc.html" },
+        { name: "Product Improvement", count: this.topicCount(window.IMPROVE_CASES, "teardowns", "teardowns"), desc: "How to critique and level-up any product.", bg: "#f4f1ea", fg: "#1a1712", link: "Product-Improvement.dc.html" },
+        { name: "Product Design", count: this.topicCount(window.DESIGN_CASES, "guided briefs", "guided briefs"), desc: "Design-sense prompts and structured answers.", bg: "#25D366", fg: "#1a1712", link: "Product-Design.dc.html" },
+        { name: "SQL Bootcamp", count: "30 missions · 10 days", desc: "Learn SQL by running real queries. Levels, XP, zero setup.", bg: "#2ee6d6", fg: "#1a1712", link: "SQL-Bootcamp.dc.html" },
+      ],
+      playbookList: [
+        { num: "1", title: "The Zero-to-PM roadmap", desc: "A section-by-section path from curious to interview-ready.", meta_: "14 SECTIONS · UPDATED 2026", link: "Zero-to-PM.dc.html", bg: "#5b2fe0", fg: "#ffffff", sub: "#e4dcff", meta: "#c9b8ff", badgeBg: "#c6f24e", badgeFg: "#1a1712" },
+        { num: "2", title: "Cracking guesstimates", desc: "The exact structure I use to size any market on the spot.", meta_: "2 MIN READ · WITH EXAMPLES", link: "Insight.dc.html?slug=guesstimates-mindset", bg: "#c6f24e", fg: "#1a1712", sub: "#3d3f28", meta: "#5c5e38", badgeBg: "#5b2fe0", badgeFg: "#ffffff" },
+        { num: "3", title: "Writing a killer RCA", desc: "Turn 'the metric dropped' into a crisp, structured answer.", meta_: "2 MIN READ · TEMPLATE INSIDE", link: "Insight.dc.html?slug=rca-mindset", bg: "#ff5a3c", fg: "#ffffff", sub: "#ffe6df", meta: "#ffd2c6", badgeBg: "#1a1712", badgeFg: "#ffffff" },
+        { num: "4", title: "Acing the PM interview loop", desc: "Product sense, execution and behavioral — what they test.", meta_: "2 MIN READ · CHECKLIST", link: "Insight.dc.html?slug=interview-loop", bg: "#f4f1ea", fg: "#1a1712", sub: "#4a463d", meta: "#6f6a60", badgeBg: "#5b2fe0", badgeFg: "#ffffff" }
+      ],
+      quotes: [
+        { text: "His ability to understand user needs, simplify complex workflows and implement practical solutions reflects the mindset of an excellent product leader. I'd highly recommend him for any Product Management or Product Operations role.", name: "Prachi Sahu", role: "Government Advisory Professional · XIM University", bg: "#f4f1ea", fg: "#1a1712", avatar: "#5b2fe0", linkedin: "https://www.linkedin.com/in/ximbprachisahu/", onZoom: () => this.openZoom("images/prachi.jpg"), avatarEl: React.createElement("img", { src: "images/prachi.jpg", alt: "Prachi Sahu", style: { width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 25%", display: "block" } }) },
+        { text: "He'd look at something everyone else had accepted as messy and quietly engineer a better way through it — reliably the person who turns a vague problem into a working solution.", name: "Jagannath Mohapatra", role: "Project Coordinator, EPR Advisory · XIM University", bg: "#5b2fe0", fg: "#ffffff", avatar: "#c6f24e", linkedin: "https://www.linkedin.com/in/umg23018/", onZoom: () => this.openZoom("images/jagannath.jpg"), avatarEl: React.createElement("img", { src: "images/jagannath.jpg", alt: "Jagannath Mohapatra", style: { width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 25%", display: "block" } }) },
+        { text: "The most creative and innovative person I know — a steady mind who handles pressure really well. A better mentor and a great friend.", name: "Ayanavo Datta", role: "Solution Engineer, HBSS India · XIM University", bg: "#ff5a3c", fg: "#ffffff", avatar: "#f4f1ea", linkedin: "https://www.linkedin.com/in/umg23003/", onZoom: () => this.openZoom("images/ayanavo.jpg"), avatarEl: React.createElement("img", { src: "images/ayanavo.jpg", alt: "Ayanavo Datta", style: { width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 18%", display: "block" } }) }
+      ],
+      posts: [
+        { date: "Jul 2026", read: "6 min", title: "The metric that lies: vanity vs. value", link: "Newsletters.dc.html" },
+        { date: "Jun 2026", read: "8 min", title: "How I run discovery in a week", link: "Newsletters.dc.html" },
+        { date: "Jun 2026", read: "5 min", title: "Guesstimates: the 4-step skeleton", link: "Newsletters.dc.html" }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
