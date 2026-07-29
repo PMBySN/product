@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="responsive.css">
+  <script src="./design-data.js"></script>
+  <script src="./bookmarks.js"></script>
+  <script src="./community.js"></script>
+  <script src="./nav-library.js?v=4"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #e9e7e2; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: #c6f24e; color: #1a1712; }
+  </style>
+</helmet>
+
+<div style="font-family: 'Manrope', sans-serif; background: #e9e7e2; color: #1a1712;">
+
+  <nav style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; padding: 13px 40px; background: #f4f1eaee; backdrop-filter: blur(8px); border-bottom: 1.5px solid #1a1712;">
+    <a href="Portfolio.dc.html" style="color:#1a1712; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -0.01em;">SN<span style="color:#5b2fe0;">.</span></a>
+    <div style="display:flex; align-items:center; gap:4px; flex-wrap:wrap; font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600;">
+      <a href="Portfolio.dc.html#work" style="color:#1a1712; background:transparent; padding:8px 13px; border-radius:999px; white-space:nowrap;" style-hover="background:#1a17121a;">Work</a>
+      <a href="Portfolio.dc.html#resources" style="color:#f4f1ea; background:#1a1712; padding:8px 13px; border-radius:999px; white-space:nowrap;" style-hover="background:#1a1712;">Library</a>
+      <a href="SQL-Bootcamp.dc.html" style="color:#1a1712; background:transparent; padding:8px 13px; border-radius:999px; white-space:nowrap;" style-hover="background:#1a17121a;">SQL Bootcamp</a>
+      <a href="Market-Updates.dc.html" style="color:#1a1712; background:transparent; padding:8px 13px; border-radius:999px; white-space:nowrap;" style-hover="background:#1a17121a;">Writing</a>
+    </div>
+    <div id="sn-account-slot" style="display:flex; align-items:center;"></div>
+    <a href="Portfolio.dc.html#contact" style="color:#fff; font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; background:#5b2fe0; padding:9px 17px; border-radius:999px; border:1.5px solid #1a1712; box-shadow: 2px 2px 0 #1a1712; white-space:nowrap;">Hire me →</a>
+  </nav>
+
+  <div style="max-width:900px; margin:0 auto; padding:22px 40px 0; font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; display:flex; gap:9px; flex-wrap:wrap; align-items:center;">
+    <a href="Portfolio.dc.html" style="color:#5b2fe0;" style-hover="text-decoration:underline;">Home</a><span style="color:#7a746a;">/</span><a href="Portfolio.dc.html#resources" style="color:#5b2fe0;" style-hover="text-decoration:underline;">Library</a><span style="color:#7a746a;">/</span><span style="color:#59544a;">Product Design</span>
+  </div>
+
+  <header style="max-width: 900px; margin: 0 auto; padding: 60px 40px 44px;">
+    <div style="display:inline-flex; align-items:center; gap:8px; background:#25D366; color:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:7px 15px; font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; box-shadow:3px 3px 0 #1a1712; white-space:nowrap;">FREE RESOURCE · PRODUCT DESIGN</div>
+    <h1 style="font-family:'Bricolage Grotesque',sans-serif; font-size:60px; line-height:0.96; margin:24px 0 0; font-weight:800; letter-spacing:-0.035em;">Design flows people <span style="position:relative; display:inline-block; color:#1a1712;">love<svg viewBox="0 0 150 20" style="position:absolute; left:0; bottom:-8px; width:100%; height:13px;" preserveAspectRatio="none"><path d="M4 12 Q 50 4 92 10 T 146 8" stroke="#25D366" stroke-width="4" fill="none" stroke-linecap="round"/></svg></span>.</h1>
+    <p style="font-size:19px; line-height:1.55; color:#4a463d; margin:30px 0 0; max-width:680px;">You don't need to be a designer to have killer product-design sense. You need a lens — and the nerve to make calls. In every case below, I don't hand you the answer; I hand you the choices, and <i>you</i> pick the user, the pain and the fix. By the last line, you'll realise you designed it.</p>
+    <div style="display:flex; gap:14px; margin-top:26px; font-family:'JetBrains Mono',monospace; font-size:12px; color:#6f6a60; letter-spacing:0.06em;">
+      <span>THE METHOD + 14 GUIDED BRIEFS</span><span>·</span><span>YOU MAKE THE CALLS</span>
+    </div>
+  </header>
+
+  <article style="max-width: 760px; margin: 0 auto; padding: 12px 40px 40px; display:flex; flex-direction:column; gap:40px;">
+    <section>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-size:32px; font-weight:800; letter-spacing:-0.02em; margin:0 0 14px;">Design is empathy, made decisive</h2>
+      <p style="font-size:17px; line-height:1.65; color:#33302a; margin:0;">Every "how would you design X?" is answering a silent question: whose life gets better, and how? So we don't start with screens — we start with the human, pick the one who needs it most, find the pain that hurts most, and choose the fix with the biggest payoff. Commit to those calls out loud and you sound like a product leader.</p>
+    </section>
+
+    <section style="background:#fff; border:1.5px solid #1a1712; border-radius:22px; padding:32px 34px; box-shadow:6px 6px 0 #1a1712;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.12em; color:#5b2fe0; text-transform:uppercase;">The design-sense playbook</div>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-size:28px; font-weight:800; letter-spacing:-0.02em; margin:10px 0 22px;">The 6-step method</h2>
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; gap:16px;"><span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; color:#5b2fe0; font-size:20px; min-width:26px;">1</span><div><b style="font-size:16px;">Clarify.</b><div style="font-size:15.5px; color:#4a463d; line-height:1.55; margin-top:2px;">Ask the questions that pin down scope, users and constraints.</div></div></div>
+        <div style="display:flex; gap:16px;"><span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; color:#5b2fe0; font-size:20px; min-width:26px;">2</span><div><b style="font-size:16px;">Meet the users, pick one.</b><div style="font-size:15.5px; color:#4a463d; line-height:1.55; margin-top:2px;">List real personas, then commit to the one with the most to gain.</div></div></div>
+        <div style="display:flex; gap:16px;"><span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; color:#5b2fe0; font-size:20px; min-width:26px;">3</span><div><b style="font-size:16px;">Find the pains.</b><div style="font-size:15.5px; color:#4a463d; line-height:1.55; margin-top:2px;">What actually hurts them, ranked by frustration × frequency.</div></div></div>
+        <div style="display:flex; gap:16px;"><span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; color:#5b2fe0; font-size:20px; min-width:26px;">4</span><div><b style="font-size:16px;">Generate solutions.</b><div style="font-size:15.5px; color:#4a463d; line-height:1.55; margin-top:2px;">Ideas against the top pain — quantity first, then cut.</div></div></div>
+        <div style="display:flex; gap:16px;"><span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; color:#5b2fe0; font-size:20px; min-width:26px;">5</span><div><b style="font-size:16px;">Prioritise.</b><div style="font-size:15.5px; color:#4a463d; line-height:1.55; margin-top:2px;">RICE or Impact/Effort. Deciding is the job — show your reasoning.</div></div></div>
+        <div style="display:flex; gap:16px;"><span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; color:#5b2fe0; font-size:20px; min-width:26px;">6</span><div><b style="font-size:16px;">Define metrics.</b><div style="font-size:15.5px; color:#4a463d; line-height:1.55; margin-top:2px;">How you'll know the design actually worked.</div></div></div>
+      </div>
+    </section>
+  </article>
+
+  <section style="max-width: 1200px; margin: 0 auto; padding: 20px 40px 0;">
+    <div style="text-align:center; max-width:640px; margin:0 auto 40px;">
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:#5b2fe0; margin-bottom:12px;">Guided briefs</div>
+      <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-size:46px; line-height:0.98; margin:0 0 14px; font-weight:800; letter-spacing:-0.03em;">{{ countLabel }} design briefs — you solve them</h2>
+      <p style="font-size:17px; line-height:1.55; color:#4a463d; margin:0;">Each one hands you the choices at every fork. Pick a brief, click in, and by the end you'll have designed it yourself.</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:18px;">
+      <sc-for list="{{ cases }}" as="c" hint-placeholder-count="9">
+        <a href="CaseStudy.dc.html?cat=design&case={{ c.slug }}" style="display:flex; flex-direction:column; background:#fff; border:1.5px solid #1a1712; border-radius:22px; overflow:hidden; box-shadow:6px 6px 0 #1a1712;" style-hover="transform: translate(-3px,-3px); box-shadow:9px 9px 0 #1a1712;">
+          <div style="background:#f2f0eb; border-bottom:1.5px solid #1a1712; height:130px; display:flex; align-items:center; justify-content:center;">
+            <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:28px; letter-spacing:-0.03em; color:{{ c.brand }};">{{ c.wordmark }}</span>
+          </div>
+          <div style="padding:22px 24px 24px; display:flex; flex-direction:column; gap:12px; flex:1;">
+            <div style="display:flex; gap:8px;">
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; background:#c6f24e; border:1.5px solid #1a1712; border-radius:999px; padding:4px 10px;">DESIGN</span>
+              <span style="font-family:'JetBrains Mono',monospace; font-size:10px; font-weight:600; background:#f4f1ea; border:1.5px solid #1a1712; border-radius:999px; padding:4px 10px;">{{ c.company }}</span>
+            </div>
+            <div style="font-size:16px; font-weight:700; line-height:1.34; letter-spacing:-0.01em;">{{ c.title }}</div>
+            <div style="margin-top:auto; font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; color:#5b2fe0;">Solve it with me →</div>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="text-align:center; max-width:760px; margin:0 auto; padding:80px 40px 20px;">
+    <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-size:34px; font-weight:800; letter-spacing:-0.02em; margin:0 0 10px;">Designing something right now?</h2>
+    <p style="font-size:17px; line-height:1.6; color:#4a463d; margin:0 0 24px;">Bring me your brief and we'll pick the user, the pain and the fix together — live.</p>
+    <a href="Portfolio.dc.html#contact" style="display:inline-block; background:#1a1712; color:#f4f1ea; border:1.5px solid #1a1712; border-radius:999px; padding:15px 30px; font-weight:700; font-size:16px;">Reach out →</a>
+  </section>
+
+  <section style="max-width:1200px; margin:0 auto; padding:64px 40px 0;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+      <a href="Product-Improvement.dc.html" style="color:#1a1712; background:#fff; border:1.5px solid #1a1712; border-radius:18px; padding:22px 26px; box-shadow:5px 5px 0 #1a1712; display:flex; flex-direction:column; gap:5px; text-align:left;" style-hover="transform: translate(-2px,-2px); box-shadow:7px 7px 0 #1a1712;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#59544a; letter-spacing:0.1em; text-transform:uppercase;">← Previous in the library</span>
+        <span style="font-family:'Bricolage Grotesque',sans-serif; font-size:23px; font-weight:800; letter-spacing:-0.02em;">Product Improvement</span>
+      </a>
+      <a href="Personal-Insights.dc.html" style="color:#1a1712; background:#fff; border:1.5px solid #1a1712; border-radius:18px; padding:22px 26px; box-shadow:5px 5px 0 #1a1712; display:flex; flex-direction:column; gap:5px; text-align:right;" style-hover="transform: translate(-2px,-2px); box-shadow:7px 7px 0 #1a1712;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#59544a; letter-spacing:0.1em; text-transform:uppercase;">Next in the library →</span>
+        <span style="font-family:'Bricolage Grotesque',sans-serif; font-size:23px; font-weight:800; letter-spacing:-0.02em;">Personal Insights</span>
+      </a>
+    </div>
+  </section>
+
+  <footer style="background:#1a1712; color:#b8b3a8; padding:40px 0; margin-top:60px;">
+    <div style="max-width:1200px; margin:0 auto; padding:0 40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+      <a href="Portfolio.dc.html" style="color:#f4f1ea; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:20px;">Shubham Nayak<span style="color:#c6f24e;">.</span></a>
+      <div style="display:flex; gap:20px; flex-wrap:wrap; font-family:'JetBrains Mono',monospace; font-size:12px;">
+        <a href="Portfolio.dc.html#work" style="color:#b8b3a8;" style-hover="color:#f4f1ea;">Work</a>
+        <a href="Portfolio.dc.html#resources" style="color:#b8b3a8;" style-hover="color:#f4f1ea;">Library</a>
+        <a href="SQL-Bootcamp.dc.html" style="color:#b8b3a8;" style-hover="color:#f4f1ea;">SQL Bootcamp</a>
+        <a href="Newsletters.dc.html" style="color:#b8b3a8;" style-hover="color:#f4f1ea;">Writing</a>
+        <a href="Portfolio.dc.html#contact" style="color:#b8b3a8;" style-hover="color:#f4f1ea;">Contact</a>
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px;">© 2026 Shubham Nayak · Free forever</div>
+    </div>
+    <div style="max-width:1200px; margin:22px auto 0; padding:20px 40px 0; border-top:1px solid #322d26;">
+      <p style="font-size:12.5px; line-height:1.65; color:#9b968c; margin:0; max-width:88ch; text-wrap:pretty;">Everything here is written in my own words, in my own framing — but I didn't learn any of it in a vacuum. I've studied a lot of publicly available material to get here, and where a case study names a real company or product, that name and brand belong to them, not to me. Nothing on this site is intended to infringe anyone's work. If you feel something shouldn't be here, <a href="Portfolio.dc.html#contact" style="color:#c6f24e;" style-hover="text-decoration:underline;">tell me</a> and I'll take it down, no argument.</p>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cases: [] };
+  componentDidMount() { this.load(20); }
+  load(tries) {
+    if (window.DESIGN_CASES) { this.setState({ cases: window.DESIGN_CASES }); return; }
+    if (tries > 0) setTimeout(() => this.load(tries - 1), 80);
+  }
+  renderVals() {
+    const n = this.state.cases.length;
+    return { cases: this.state.cases, countLabel: n ? String(n) : "" };
+  }
+}
+</script>
+</body>
+</html>

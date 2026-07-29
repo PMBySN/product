@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="responsive.css">
+  <script src="./newsletters-data.js"></script>
+  <script src="./bookmarks.js"></script>
+  <script src="./community.js"></script>
+  <script src="./nav-library.js?v=4"></script>
+  <script src="./share.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #e9e7e2; }
+    a { color: #5b2fe0; text-decoration: none; }
+    a:hover { color: #4a24b8; }
+    ::selection { background: #c6f24e; color: #1a1712; }
+  </style>
+</helmet>
+
+<div style="font-family: 'Manrope', sans-serif; background: #e9e7e2; color: #1a1712;">
+  <nav style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; padding: 13px 40px; background: #f4f1eaee; backdrop-filter: blur(8px); border-bottom: 1.5px solid #1a1712;">
+    <a href="Portfolio.dc.html" style="color:#1a1712; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 21px; letter-spacing: -0.01em;">SN<span style="color:#5b2fe0;">.</span></a>
+    <div style="display:flex; align-items:center; gap:4px; flex-wrap:wrap; font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600;">
+      <a href="Portfolio.dc.html#work" style="color:#1a1712; background:transparent; padding:8px 13px; border-radius:999px; white-space:nowrap;" style-hover="background:#1a17121a;">Work</a>
+      <a href="Portfolio.dc.html#resources" style="color:#1a1712; background:transparent; padding:8px 13px; border-radius:999px; white-space:nowrap;" style-hover="background:#1a17121a;">Library</a>
+      <a href="SQL-Bootcamp.dc.html" style="color:#1a1712; background:transparent; padding:8px 13px; border-radius:999px; white-space:nowrap;" style-hover="background:#1a17121a;">SQL Bootcamp</a>
+      <a href="Market-Updates.dc.html" style="color:#f4f1ea; background:#1a1712; padding:8px 13px; border-radius:999px; white-space:nowrap;" style-hover="background:#1a1712;">Writing</a>
+    </div>
+    <div id="sn-account-slot" style="display:flex; align-items:center;"></div>
+    <a href="Portfolio.dc.html#contact" style="color:#fff; font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; background:#5b2fe0; padding:9px 17px; border-radius:999px; border:1.5px solid #1a1712; box-shadow: 2px 2px 0 #1a1712; white-space:nowrap;">Hire me →</a>
+  </nav>
+
+  <div style="max-width:1160px; margin:0 auto; padding:22px 40px 0; font-family:'JetBrains Mono',monospace; font-size:11.5px; letter-spacing:0.06em; display:flex; gap:9px; flex-wrap:wrap; align-items:center;">
+    <a href="Portfolio.dc.html" style="color:#5b2fe0;" style-hover="text-decoration:underline;">Home</a><span style="color:#7a746a;">/</span><a href="Portfolio.dc.html#resources" style="color:#5b2fe0;" style-hover="text-decoration:underline;">Library</a><span style="color:#7a746a;">/</span><span style="color:#59544a;">Newsletters</span>
+  </div>
+
+  <sc-if value="{{ isList }}" hint-placeholder-val="{{ false }}">
+    <header style="max-width: 900px; margin: 0 auto; padding: 60px 40px 30px;">
+      <div style="display:inline-flex; align-items:center; gap:8px; background:#c6f24e; border:1.5px solid #1a1712; border-radius:999px; padding:7px 15px; font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600; white-space:nowrap; box-shadow:3px 3px 0 #1a1712;">THE PM NOTEBOOK · NEWSLETTER</div>
+      <h1 style="font-family:'Bricolage Grotesque',sans-serif; font-size:60px; line-height:0.96; margin:24px 0 0; font-weight:800; letter-spacing:-0.035em;">The writing behind the <span style="position:relative; display:inline-block; color:#1a1712;">work<svg viewBox="0 0 180 20" style="position:absolute; left:0; bottom:-8px; width:100%; height:13px;" preserveAspectRatio="none"><path d="M4 12 Q 60 4 110 10 T 176 8" stroke="#c6f24e" stroke-width="4" fill="none" stroke-linecap="round"/></svg></span>.</h1>
+      <p style="font-size:19px; line-height:1.55; color:#4a463d; margin:30px 0 0; max-width:680px;">Every issue of my newsletter — real stories, frameworks and lessons from actually building and shipping. No fluff, no gatekeeping. Read one and steal everything useful.</p>
+      <div style="display:flex; gap:14px; margin-top:26px; font-family:'JetBrains Mono',monospace; font-size:12px; color:#6f6a60; letter-spacing:0.06em;">
+        <span>THE PM NOTEBOOK</span><span>·</span><span>598 SUBSCRIBERS</span><span>·</span><span>{{ issueCountLabel }}</span><span>·</span><span>FREE FOREVER</span>
+      </div>
+    </header>
+
+    <section style="max-width: 1160px; margin: 0 auto; padding: 34px 40px 20px;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(340px, 1fr)); gap:22px;">
+        <sc-for list="{{ issues }}" as="n" hint-placeholder-count="1">
+          <a href="Newsletters.dc.html?slug={{ n.slug }}" style="color:#1a1712; display:flex; flex-direction:column; background:#fff; border:1.5px solid #1a1712; border-radius:22px; overflow:hidden; box-shadow:6px 6px 0 #1a1712;" style-hover="transform: translate(-2px,-2px); box-shadow:8px 8px 0 #1a1712;">
+            <div style="position:relative; border-bottom:1.5px solid #1a1712; aspect-ratio:16/9; overflow:hidden; background:#e9e7e2;">
+              {{ n.coverEl }}
+              <span style="position:absolute; top:14px; left:14px; font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:700; background:{{ n.accent }}; color:#1a1712; border:1.5px solid #1a1712; border-radius:8px; padding:5px 10px; white-space:nowrap;">ISSUE {{ n.issue }}</span>
+            </div>
+            <div style="padding:22px 24px 26px; display:flex; flex-direction:column; gap:10px; flex:1;">
+              <div style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#6f6a60; letter-spacing:0.06em;">{{ n.date }} · {{ n.readTime }} · {{ n.tag }}</div>
+              <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:27px; font-weight:800; line-height:1.03; letter-spacing:-0.02em;">{{ n.title }}</div>
+              <div style="font-size:15px; line-height:1.55; color:#4a463d;">{{ n.dek }}</div>
+              <div style="margin-top:auto; padding-top:12px; font-family:'JetBrains Mono',monospace; font-size:12.5px; font-weight:600; color:#5b2fe0;">Read the issue →</div>
+            </div>
+          </a>
+        </sc-for>
+      </div>
+      <div style="margin-top:30px; background:#5b2fe0; color:#fff; border:1.5px solid #1a1712; border-radius:22px; padding:28px 32px; box-shadow:7px 7px 0 #1a1712; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;">
+        <div style="max-width:520px;">
+          <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:24px; font-weight:800; letter-spacing:-0.02em; line-height:1.1;">Get the next one in your inbox.</div>
+          <div style="font-size:14.5px; opacity:0.9; margin-top:6px;">New issues land on LinkedIn first. One click to never miss one.</div>
+        </div>
+        <a href="https://www.linkedin.com/newsletters/the-pm-notebook-7271767289497051136/" target="_blank" style="color:#1a1712; display:inline-flex; align-items:center; gap:10px; background:#c6f24e; border:1.5px solid #1a1712; border-radius:12px; padding:14px 22px; font-weight:800; font-size:15px; box-shadow:3px 3px 0 #1a1712;" style-hover="transform: translate(-2px,-2px); box-shadow:5px 5px 0 #1a1712;"><span style="font-family:'JetBrains Mono',monospace; font-size:11px; background:#0a66c2; color:#fff; padding:4px 8px; border-radius:6px;">in</span> Subscribe on LinkedIn →</a>
+      </div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ isRead }}" hint-placeholder-val="{{ false }}">
+    <header style="max-width: 820px; margin: 0 auto; padding: 48px 40px 26px;">
+      <a href="Newsletters.dc.html" style="font-family:'JetBrains Mono',monospace; font-size:12px; font-weight:600;">← All issues</a>
+      <div style="display:flex; align-items:center; gap:12px; margin:22px 0 22px; flex-wrap:wrap;">
+        <span style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:15px; background:{{ accent }}; color:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:6px 14px; white-space:nowrap; box-shadow:3px 3px 0 #1a1712;">ISSUE {{ issue }}</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; font-weight:600; background:#1a1712; color:#f4f1ea; border-radius:999px; padding:6px 12px; letter-spacing:0.06em;">THE PM NOTEBOOK</span>
+        <span style="font-family:'JetBrains Mono',monospace; font-size:12px; color:#6f6a60;">{{ date }} · {{ readTime }}</span>
+      </div>
+      <h1 style="font-family:'Bricolage Grotesque',sans-serif; font-size:52px; line-height:0.98; margin:0; font-weight:800; letter-spacing:-0.035em; text-wrap:pretty;">{{ title }}</h1>
+      <p style="font-size:19px; line-height:1.5; color:#4a463d; margin:18px 0 0; text-wrap:pretty;">{{ dek }}</p>
+      <button onClick="{{ onBookmark }}" style="margin-top:24px; display:inline-flex; align-items:center; gap:8px; background:{{ bmBg }}; color:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:11px 20px; font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600; cursor:pointer; white-space:nowrap; box-shadow:3px 3px 0 #1a1712;">{{ bmLabel }}</button>
+    </header>
+
+    <div style="max-width:900px; margin:0 auto; padding:6px 40px 0;">
+      <div style="position:relative; border:1.5px solid #1a1712; border-radius:22px; overflow:hidden; box-shadow:8px 8px 0 #1a1712; background:#e9e7e2;">
+        {{ coverEl }}
+        <sc-if value="{{ hasCoverPeople }}">
+          <div style="position:absolute; inset:0; opacity:0; transition:opacity .35s ease; display:flex; justify-content:flex-end;" style-hover="opacity:1;">
+            <div style="width:min(56%, 320px); height:100%; background:linear-gradient(90deg, rgba(26,23,18,0) 0%, rgba(26,23,18,0.5) 24%, rgba(26,23,18,0.88) 56%); display:flex; align-items:center; padding:18px 22px 18px 12px;">
+              <div style="border-left:1.5px dashed rgba(255,255,255,0.55); padding-left:16px; display:flex; flex-direction:column; gap:9px; width:100%; max-height:100%; overflow:auto;">
+                <div style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:0.14em; text-transform:uppercase; color:#c6f24e; margin-bottom:2px;">In this photo →</div>
+                <sc-for list="{{ coverPeople }}" as="p" hint-placeholder-count="0">
+                  <div style="display:flex; align-items:center; gap:10px;">
+                    <span style="width:14px; height:0; border-top:1.5px dashed rgba(255,255,255,0.5); flex-shrink:0; margin-left:-16px;"></span>
+                    <button onClick="{{ p.onZoom }}" title="Click to zoom" style="width:36px; height:36px; flex-shrink:0; border-radius:999px; border:1.5px solid #fff; overflow:hidden; padding:0; cursor:zoom-in; background:#e9e7e2;">
+                      {{ p.photoEl }}
+                    </button>
+                    <sc-if value="{{ p.hasLink }}"><a href="{{ p.url }}" target="_blank" style="color:#fff; font-size:13px; font-weight:600; line-height:1.2;" style-hover="text-decoration:underline;">{{ p.name }}</a></sc-if>
+                    <sc-if value="{{ p.noLink }}"><span style="color:#fff; font-size:13px; font-weight:600; line-height:1.2;">{{ p.name }}</span></sc-if>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+
+    <article style="max-width: 720px; margin: 0 auto; padding: 34px 40px 20px; display:flex; flex-direction:column; gap:24px;">
+      <sc-for list="{{ blocks }}" as="b" hint-placeholder-count="12">
+        <sc-if value="{{ b.isLead }}"><p style="font-size:22px; line-height:1.5; font-weight:600; color:#1a1712; margin:0; text-wrap:pretty;">{{ b.x }}</p></sc-if>
+        <sc-if value="{{ b.isP }}"><p style="font-size:17.5px; line-height:1.72; color:#33302a; margin:0; text-wrap:pretty;">{{ b.x }}</p></sc-if>
+
+        <sc-if value="{{ b.isH2 }}">
+          <div style="display:flex; align-items:center; gap:14px; margin-top:22px;">
+            <span style="font-family:'JetBrains Mono',monospace; font-weight:600; font-size:12px; letter-spacing:0.1em; background:#1a1712; color:#f4f1ea; border:1.5px solid #1a1712; border-radius:8px; padding:6px 11px; white-space:nowrap;">{{ b.label }}</span>
+            <h2 style="font-family:'Bricolage Grotesque',sans-serif; font-size:29px; font-weight:800; letter-spacing:-0.02em; margin:0; line-height:1.08;">{{ b.x }}</h2>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isNote }}">
+          <div style="background:#c6f24e; border:1.5px solid #1a1712; border-radius:16px; padding:18px 22px; box-shadow:4px 4px 0 #1a1712; display:flex; gap:12px; align-items:flex-start;">
+            <span style="font-size:20px; line-height:1.4;">💡</span>
+            <div style="font-size:16.5px; line-height:1.55; font-weight:600; color:#1a1712;">{{ b.x }}</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isCallout }}">
+          <div style="background:#5b2fe0; color:#fff; border:1.5px solid #1a1712; border-radius:18px; padding:26px 28px; box-shadow:6px 6px 0 #1a1712;">
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.12em; text-transform:uppercase; opacity:0.85; margin-bottom:10px;">{{ b.label }}</div>
+            <div style="font-size:18.5px; line-height:1.5; font-weight:600;">{{ b.x }}</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isUl }}">
+          <div style="display:flex; flex-direction:column; gap:11px;">
+            <sc-for list="{{ b.items }}" as="it" hint-placeholder-count="3">
+              <div style="display:flex; gap:12px; align-items:flex-start;">
+                <span style="color:#ff5a3c; font-weight:800; font-size:18px; line-height:1.5;">→</span>
+                <span style="font-size:16.5px; line-height:1.58; color:#33302a;">{{ it }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isMenu }}">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(180px, 1fr)); gap:14px;">
+            <sc-for list="{{ b.items }}" as="m" hint-placeholder-count="3">
+              <div style="background:#fff; border:1.5px solid #1a1712; border-radius:16px; padding:18px 18px; box-shadow:4px 4px 0 #1a1712; display:flex; flex-direction:column; gap:8px;">
+                <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:19px; font-weight:800; letter-spacing:-0.01em; line-height:1.1;">{{ m.name }}</div>
+                <div style="align-self:flex-start; font-family:'JetBrains Mono',monospace; font-size:13px; font-weight:600; background:#c6f24e; border:1.5px solid #1a1712; border-radius:8px; padding:4px 10px;">{{ m.price }}</div>
+                <div style="font-size:14px; line-height:1.5; color:#4a463d;">{{ m.note }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isFigure }}">
+          <figure style="margin:6px 0;">
+            <div style="position:relative; border:1.5px solid #1a1712; border-radius:18px; overflow:hidden; box-shadow:6px 6px 0 #1a1712; background:#e9e7e2;">
+              {{ b.imgEl }}
+              <sc-if value="{{ b.hasPeople }}">
+                <div style="position:absolute; inset:0; opacity:0; transition:opacity .35s ease; display:flex; justify-content:flex-end;" style-hover="opacity:1;">
+                  <div style="width:min(58%, 320px); height:100%; background:linear-gradient(90deg, rgba(26,23,18,0) 0%, rgba(26,23,18,0.5) 24%, rgba(26,23,18,0.88) 56%); display:flex; align-items:center; padding:18px 22px 18px 12px;">
+                    <div style="border-left:1.5px dashed rgba(255,255,255,0.55); padding-left:16px; display:flex; flex-direction:column; gap:9px; width:100%; max-height:100%; overflow:auto;">
+                      <div style="font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:0.14em; text-transform:uppercase; color:#c6f24e; margin-bottom:2px;">In this photo →</div>
+                      <sc-for list="{{ b.people }}" as="p" hint-placeholder-count="0">
+                        <div style="display:flex; align-items:center; gap:10px;">
+                          <span style="width:14px; height:0; border-top:1.5px dashed rgba(255,255,255,0.5); flex-shrink:0; margin-left:-16px;"></span>
+                          <button onClick="{{ p.onZoom }}" title="Click to zoom" style="width:36px; height:36px; flex-shrink:0; border-radius:999px; border:1.5px solid #fff; overflow:hidden; padding:0; cursor:zoom-in; background:#e9e7e2;">
+                            {{ p.photoEl }}
+                          </button>
+                          <sc-if value="{{ p.hasLink }}"><a href="{{ p.url }}" target="_blank" style="color:#fff; font-size:13px; font-weight:600; line-height:1.2;" style-hover="text-decoration:underline;">{{ p.name }}</a></sc-if>
+                          <sc-if value="{{ p.noLink }}"><span style="color:#fff; font-size:13px; font-weight:600; line-height:1.2;">{{ p.name }}</span></sc-if>
+                        </div>
+                      </sc-for>
+                    </div>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+            <figcaption style="font-family:'JetBrains Mono',monospace; font-size:12.5px; line-height:1.5; color:#6f6a60; margin-top:12px; padding-left:2px;">{{ b.caption }}</figcaption>
+          </figure>
+        </sc-if>
+
+        <sc-if value="{{ b.isStat }}">
+          <div style="background:#1a1712; color:#f4f1ea; border:1.5px solid #1a1712; border-radius:20px; padding:32px 28px; box-shadow:6px 6px 0 #c6f24e; text-align:center;">
+            <div style="font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:64px; letter-spacing:-0.03em; line-height:1; color:#c6f24e;">{{ b.value }}</div>
+            <div style="font-family:'JetBrains Mono',monospace; font-size:12.5px; letter-spacing:0.08em; text-transform:uppercase; margin-top:12px; opacity:0.85;">{{ b.label }}</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ b.isQuote }}">
+          <blockquote style="margin:6px 0; border-left:5px solid #ff5a3c; padding:6px 0 6px 22px;">
+            <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:27px; font-weight:700; line-height:1.2; letter-spacing:-0.02em; color:#1a1712; text-wrap:pretty;">“{{ b.x }}”</div>
+          </blockquote>
+        </sc-if>
+      </sc-for>
+
+      <div style="margin-top:14px; background:#c6f24e; border:1.5px solid #1a1712; border-radius:22px; padding:30px 30px; box-shadow:7px 7px 0 #1a1712; text-align:center;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#1a1712; opacity:0.7; margin-bottom:8px;">Liked this one?</div>
+        <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:28px; font-weight:800; letter-spacing:-0.02em; line-height:1.06; margin-bottom:16px;">Get every issue as I write it.</div>
+        <a href="https://www.linkedin.com/newsletters/the-pm-notebook-7271767289497051136/" target="_blank" style="color:#fff; display:inline-flex; align-items:center; gap:10px; background:#5b2fe0; border:1.5px solid #1a1712; border-radius:12px; padding:14px 26px; font-weight:800; font-size:15.5px; box-shadow:4px 4px 0 #1a1712;" style-hover="transform: translate(-2px,-2px); box-shadow:6px 6px 0 #1a1712;"><span style="font-family:'JetBrains Mono',monospace; font-size:11px; background:#0a66c2; color:#fff; padding:4px 8px; border-radius:6px;">in</span> Subscribe on LinkedIn →</a>
+      </div>
+
+      <div style="margin-top:24px;">
+        <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:22px; font-weight:800; letter-spacing:-0.02em; margin-bottom:14px;">Comments ({{ commentCount }})</div>
+        <textarea value="{{ commentText }}" onInput="{{ onCommentInput }}" placeholder="Share a thought, a question, your own take…" style="width:100%; box-sizing:border-box; min-height:74px; border:1.5px solid #1a1712; border-radius:14px; padding:13px 15px; font-family:'Manrope',sans-serif; font-size:15px; resize:vertical;"></textarea>
+        <div style="text-align:right; margin:10px 0 22px;">
+          <button onClick="{{ onPostComment }}" style="background:#5b2fe0; color:#fff; border:1.5px solid #1a1712; border-radius:999px; padding:11px 22px; font-weight:700; font-size:14px; cursor:pointer; box-shadow:3px 3px 0 #1a1712;">Post comment</button>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <sc-for list="{{ comments }}" as="c" hint-placeholder-count="0">
+            <div style="background:#fff; border:1.5px solid #1a1712; border-radius:16px; padding:16px 18px; box-shadow:3px 3px 0 #1a1712;">
+              <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px;">
+                <div style="width:34px; height:34px; flex:none; border-radius:999px; border:1.5px solid #1a1712; background:#c6f24e; display:flex; align-items:center; justify-content:center; font-weight:800; font-family:'Bricolage Grotesque',sans-serif; font-size:15px; overflow:hidden;">{{ c.initial }}</div>
+                <div style="flex:1;">
+                  <div style="font-weight:700; font-size:14.5px;">{{ c.name }}</div>
+                  <div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#6f6a60;">{{ c.meta }}</div>
+                </div>
+                <sc-if value="{{ c.canDelete }}"><button onClick="{{ c.onDelete }}" style="background:#f4f1ea; border:1.5px solid #1a1712; border-radius:8px; padding:4px 9px; font-size:11px; cursor:pointer; font-family:'JetBrains Mono',monospace;">delete</button></sc-if>
+              </div>
+              <div style="font-size:15.5px; line-height:1.55; color:#33302a; white-space:pre-wrap;">{{ c.text }}</div>
+            </div>
+          </sc-for>
+          <sc-if value="{{ noComments }}"><div style="font-size:15px; color:#6f6a60; padding:6px 2px;">No comments yet — be the first to say something.</div></sc-if>
+        </div>
+      </div>
+    </article>
+
+    <sc-if value="{{ hasRelated }}">
+      <section style="max-width: 1160px; margin: 0 auto; padding: 40px 40px 20px;">
+        <div style="font-family:'JetBrains Mono',monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:#5b2fe0; margin-bottom:18px;">More from The PM Notebook</div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:16px;">
+          <sc-for list="{{ related }}" as="r" hint-placeholder-count="1">
+            <a href="Newsletters.dc.html?slug={{ r.slug }}" style="color:#1a1712; display:flex; gap:16px; align-items:flex-start; background:#fff; border:1.5px solid #1a1712; border-radius:20px; padding:20px 22px; box-shadow:5px 5px 0 #1a1712;" style-hover="transform: translate(-2px,-2px); box-shadow:7px 7px 0 #1a1712;">
+              <span style="font-family:'JetBrains Mono',monospace; font-weight:700; font-size:12px; background:{{ r.accent }}; color:#1a1712; border:1.5px solid #1a1712; border-radius:8px; padding:8px 10px; flex-shrink:0;">{{ r.issue }}</span>
+              <div>
+                <div style="font-size:16px; font-weight:700; line-height:1.25; letter-spacing:-0.01em;">{{ r.title }}</div>
+                <div style="font-family:'JetBrains Mono',monospace; font-size:10.5px; color:#6f6a60; margin-top:8px; letter-spacing:0.05em;">{{ r.date }} · {{ r.readTime }}</div>
+              </div>
+            </a>
+          </sc-for>
+        </div>
+      </section>
+    </sc-if>
+  </sc-if>
+
+  <sc-if value="{{ notFound }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:640px; margin:0 auto; padding:80px 40px; text-align:center;">
+      <div style="font-family:'Bricolage Grotesque',sans-serif; font-size:32px; font-weight:800; margin-bottom:12px;">That issue isn't here yet.</div>
+      <p style="font-size:16.5px; color:#4a463d; line-height:1.6; margin:0 0 24px;">It might still be in drafts. In the meantime, there's plenty more to read.</p>
+      <a href="Newsletters.dc.html" style="color:#f4f1ea; display:inline-block; background:#1a1712; border:1.5px solid #1a1712; border-radius:999px; padding:14px 28px; font-weight:700;">← Back to all issues</a>
+    </div>
+  </sc-if>
+
+  <sc-if value="{{ zoomImg }}">
+    <div onClick="{{ closeZoom }}" style="position:fixed; inset:0; z-index:120; background:#1a1712ee; display:flex; align-items:center; justify-content:center; padding:24px; cursor:zoom-out;">{{ zoomEl }}</div>
+  </sc-if>
+
+  <section style="max-width:1200px; margin:0 auto; padding:64px 40px 0;">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+      <a href="Personal-Insights.dc.html" style="color:#1a1712; background:#fff; border:1.5px solid #1a1712; border-radius:18px; padding:22px 26px; box-shadow:5px 5px 0 #1a1712; display:flex; flex-direction:column; gap:5px; text-align:left;" style-hover="transform: translate(-2px,-2px); box-shadow:7px 7px 0 #1a1712;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#59544a; letter-spacing:0.1em; text-transform:uppercase;">← Previous in the library</span>
+        <span style="font-family:'Bricolage Grotesque',sans-serif; font-size:23px; font-weight:800; letter-spacing:-0.02em;">Personal Insights</span>
+      </a>
+      <a href="Market-Updates.dc.html" style="color:#1a1712; background:#fff; border:1.5px solid #1a1712; border-radius:18px; padding:22px 26px; box-shadow:5px 5px 0 #1a1712; display:flex; flex-direction:column; gap:5px; text-align:right;" style-hover="transform: translate(-2px,-2px); box-shadow:7px 7px 0 #1a1712;">
+        <span style="font-family:'JetBrains Mono',monospace; font-size:11px; color:#59544a; letter-spacing:0.1em; text-transform:uppercase;">Next in the library →</span>
+        <span style="font-family:'Bricolage Grotesque',sans-serif; font-size:23px; font-weight:800; letter-spacing:-0.02em;">Market Updates</span>
+      </a>
+    </div>
+  </section>
+
+  <footer style="background:#1a1712; color:#b8b3a8; padding:40px 0; margin-top:60px;">
+    <div style="max-width:1200px; margin:0 auto; padding:0 40px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+      <a href="Portfolio.dc.html" style="color:#f4f1ea; font-family:'Bricolage Grotesque',sans-serif; font-weight:800; font-size:20px;">Shubham Nayak<span style="color:#c6f24e;">.</span></a>
+      <div style="display:flex; gap:20px; flex-wrap:wrap; font-family:'JetBrains Mono',monospace; font-size:12px;">
+        <a href="Portfolio.dc.html#work" style="color:#b8b3a8;" style-hover="color:#f4f1ea;">Work</a>
+        <a href="Portfolio.dc.html#resources" style="color:#b8b3a8;" style-hover="color:#f4f1ea;">Library</a>
+        <a href="SQL-Bootcamp.dc.html" style="color:#b8b3a8;" style-hover="color:#f4f1ea;">SQL Bootcamp</a>
+        <a href="Newsletters.dc.html" style="color:#b8b3a8;" style-hover="color:#f4f1ea;">Writing</a>
+        <a href="Portfolio.dc.html#contact" style="color:#b8b3a8;" style-hover="color:#f4f1ea;">Contact</a>
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace; font-size:12px;">© 2026 Shubham Nayak · Free forever</div>
+    </div>
+    <div style="max-width:1200px; margin:22px auto 0; padding:20px 40px 0; border-top:1px solid #322d26;">
+      <p style="font-size:12.5px; line-height:1.65; color:#9b968c; margin:0; max-width:88ch; text-wrap:pretty;">Everything here is written in my own words, in my own framing — but I didn't learn any of it in a vacuum. I've studied a lot of publicly available material to get here, and where a case study names a real company or product, that name and brand belong to them, not to me. Nothing on this site is intended to infringe anyone's work. If you feel something shouldn't be here, <a href="Portfolio.dc.html#contact" style="color:#c6f24e;" style-hover="text-decoration:underline;">tell me</a> and I'll take it down, no argument.</p>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { ready: false, n: null, isList: false, user: null, comments: [], commentText: "", zoomImg: null };
+  openZoom(src) { this.setState({ zoomImg: src }); }
+  closeZoom = () => this.setState({ zoomImg: null });
+  componentDidMount() {
+    this.slug = new URLSearchParams(location.search).get("slug") || "";
+    this.load(25);
+    this._bm = () => this.forceUpdate();
+    window.addEventListener("snbm:change", this._bm);
+    this._auth = () => { this.setState({ user: (window.SNAuth && window.SNAuth.user) || null }); this.refreshCommunity(); };
+    window.addEventListener("snauth:change", this._auth);
+    this.setState({ user: (window.SNAuth && window.SNAuth.user) || null });
+  }
+  componentWillUnmount() {
+    if (this._bm) window.removeEventListener("snbm:change", this._bm);
+    if (this._auth) window.removeEventListener("snauth:change", this._auth);
+  }
+  articleId() { return "newsletter:" + this.slug; }
+  refreshCommunity() {
+    if (!this.state.n || !window.SNData) return;
+    window.SNData.listComments(this.articleId()).then(list => this.setState({ comments: list }));
+  }
+  load(tries) {
+    if (!window.NEWSLETTERS) { if (tries > 0) setTimeout(() => this.load(tries - 1), 80); return; }
+    if (!this.slug) { document.title = "The PM Notebook — Shubham Nayak"; window.snShare = null; this.setState({ ready: true, isList: true, n: null }); return; }
+    const n = window.NEWSLETTERS.find(x => x.slug === this.slug) || null;
+    if (n) document.title = n.title + " — The PM Notebook";
+    window.snShare = n ? { title: n.title, accent: n.accent } : null;
+    this.setState({ ready: true, isList: false, n });
+    setTimeout(() => this.refreshCommunity(), 0);
+  }
+  when(ts) {
+    const d = Date.now() - ts; const m = Math.floor(d / 60000);
+    if (m < 1) return "just now"; if (m < 60) return m + "m ago";
+    const h = Math.floor(m / 60); if (h < 24) return h + "h ago";
+    return Math.floor(h / 24) + "d ago";
+  }
+  onPost() {
+    const t = (this.state.commentText || "").trim(); if (!t || !window.SNAuth) return;
+    window.SNAuth.require("Sign in free to join the discussion.").then(() => {
+      window.SNData.addComment(this.articleId(), t).then(() => { this.setState({ commentText: "" }); this.refreshCommunity(); });
+    });
+  }
+  onDelete(id) { window.SNData.deleteComment(this.articleId(), id).then(() => this.refreshCommunity()); }
+  renderVals() {
+    const base = { isList: false, isRead: false, notFound: false, issues: [], blocks: [], related: [], hasRelated: false, comments: [], noComments: true, commentCount: 0, commentText: this.state.commentText, navHref: "Portfolio.dc.html", navLabel: "← Portfolio" };
+    if (!this.state.ready) return base;
+    const all = window.NEWSLETTERS || [];
+    if (this.state.isList) {
+      return Object.assign(base, {
+        isList: true, issueCountLabel: all.length + (all.length === 1 ? " ISSUE LIVE" : " ISSUES LIVE"),
+        issues: all.map(x => ({ slug: x.slug, issue: x.issue, date: x.date, readTime: x.readTime, tag: x.tag, title: x.title, dek: x.dek, accent: x.accent, coverEl: React.createElement("img", { src: x.cover, alt: x.coverAlt || x.title, style: { width: "100%", height: "100%", objectFit: "cover", display: "block" } }) }))
+      });
+    }
+    const n = this.state.n;
+    if (!n) return Object.assign(base, { notFound: true });
+    const imgEl = (src, alt, style) => src ? React.createElement("img", { src, alt: alt || "", style }) : null;
+    const avatarStyle = { width: "100%", height: "100%", objectFit: "cover", display: "block" };
+    const mkPeople = arr => (arr || []).map(p => ({ name: p.name, url: p.url || "", hasLink: !!p.url, noLink: !p.url, onZoom: () => this.openZoom(p.photo), photoEl: imgEl(p.photo, p.name, avatarStyle) }));
+    const mapBlock = b => ({
+      isLead: b.t === "lead", isP: b.t === "p", isH2: b.t === "h2", isCallout: b.t === "callout",
+      isNote: b.t === "note", isUl: b.t === "ul", isMenu: b.t === "menu", isFigure: b.t === "figure",
+      isStat: b.t === "stat", isQuote: b.t === "quote",
+      x: b.x || "", label: b.label || "", items: b.items || [],
+      caption: b.caption || "", value: b.value || "",
+      imgEl: imgEl(b.src, b.alt, { width: "100%", display: "block" }),
+      people: mkPeople(b.credits), hasPeople: (b.credits || []).length > 0
+    });
+    const blocks = n.body.map(mapBlock);
+    const coverPeople = mkPeople(n.coverCredits);
+    const coverEl = imgEl(n.cover, n.coverAlt || n.title, { width: "100%", display: "block" });
+    const zoomEl = this.state.zoomImg ? React.createElement("img", { src: this.state.zoomImg, alt: "", style: { maxWidth: "min(90vw,520px)", maxHeight: "86vh", border: "2px solid #1a1712", borderRadius: "18px", boxShadow: "12px 12px 0 #5b2fe0", objectFit: "contain", background: "#fff" } }) : null;
+    const related = all.filter(x => x.slug !== n.slug).slice(0, 3).map(x => ({ slug: x.slug, issue: x.issue, title: x.title, date: x.date, readTime: x.readTime, accent: x.accent }));
+    const user = this.state.user;
+    const isAdmin = !!(window.SNAuth && window.SNAuth.isAdmin && window.SNAuth.isAdmin());
+    const comments = (this.state.comments || []).map(c => ({
+      id: c.id, name: c.name || "Anonymous", text: c.text,
+      initial: (c.name || "?").trim().charAt(0).toUpperCase(),
+      meta: (c.role ? c.role + " · " : "") + this.when(c.ts),
+      canDelete: isAdmin || (user && c.uid === user.uid),
+      onDelete: () => this.onDelete(c.id)
+    }));
+    const bmId = "newsletter:" + n.slug;
+    const saved = !!(window.SNBM && window.SNBM.has(bmId));
+    return {
+      isRead: true, notFound: false,
+      issue: n.issue, date: n.date, readTime: n.readTime, tag: n.tag,
+      navHref: "Newsletters.dc.html", navLabel: "← All issues",
+      accent: n.accent, title: n.title, dek: n.dek, coverEl,
+      coverPeople, hasCoverPeople: coverPeople.length > 0,
+      zoomImg: this.state.zoomImg, closeZoom: this.closeZoom, zoomEl,
+      blocks, related, hasRelated: related.length > 0,
+      comments, commentCount: comments.length, noComments: comments.length === 0,
+      commentText: this.state.commentText,
+      onCommentInput: (e) => this.setState({ commentText: e.target.value }),
+      onPostComment: () => this.onPost(),
+      bmLabel: saved ? "★ Saved to bookmarks" : "☆ Bookmark this issue",
+      bmBg: saved ? "#c6f24e" : "#ffffff",
+      onBookmark: () => {
+        if (!window.SNBM) return;
+        window.SNBM.toggle({ id: bmId, title: n.title, url: "Newsletters.dc.html?slug=" + n.slug, cat: "Newsletter" });
+        this.forceUpdate();
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>
